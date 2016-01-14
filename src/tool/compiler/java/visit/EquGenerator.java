@@ -4,8 +4,10 @@ import polyglot.ast.Node;
 import polyglot.ast.NodeFactory;
 import polyglot.frontend.Job;
 import polyglot.main.Report;
-import polyglot.types.*;
-import polyglot.visit.*;
+import polyglot.types.SemanticException;
+import polyglot.types.TypeSystem;
+import polyglot.visit.ContextVisitor;
+import polyglot.visit.NodeVisitor;
 import tool.compiler.java.ast.EquGenLang;
 
 public class EquGenerator extends ContextVisitor {

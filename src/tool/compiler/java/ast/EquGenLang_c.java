@@ -25,7 +25,7 @@ public class EquGenLang_c extends J7Lang_c implements EquGenLang {
 	protected static EquGenExt equgenExt(Node n) {
 		return EquGenExt.ext(n);
 	}
-	
+
 	@Override
 	protected NodeOps NodeOps(Node n) {
 		return equgenExt(n);	// TODO: equgenExt???

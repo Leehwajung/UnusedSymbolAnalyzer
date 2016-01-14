@@ -4,7 +4,7 @@ import polyglot.ast.Ext;
 import polyglot.ast.ExtFactory;
 
 public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
-
+	
 	public EquGenExtFactory_c() {
 		super();
 	}
@@ -12,18 +12,17 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	public EquGenExtFactory_c(ExtFactory nextExtFactory) {
 		super(nextExtFactory);
 	}
-
+	
 	@Override
 	protected Ext extNodeImpl() {
 		return new EquGenExt();
 	}
-
+	
 	// TODO: Override factory methods for new extension nodes in the current
 	// extension.
-
-	/* (non-Javadoc)
-	 * @see polyglot.ast.AbstractExtFactory_c#extClassDeclImpl()
-	 */
+	
+	// Decl류 구현 오버라이딩
+	
 	@Override
 	protected Ext extClassDeclImpl() {	// 오버라이딩하고
 		return new EquGenClassDeclExt();
@@ -34,7 +33,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extProcedureDeclImpl() {
-		return super.extProcedureDeclImpl();
+//		return super.extProcedureDeclImpl();
+		return new EquGenProcedureDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -42,7 +42,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extMethodDeclImpl() {
-		return super.extMethodDeclImpl();
+//		return super.extMethodDeclImpl();
+		return new EquGenMethodDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -50,7 +51,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extConstructorDeclImpl() {
-		return super.extConstructorDeclImpl();
+//		return super.extConstructorDeclImpl();
+		return new EquGenConstructorDeclExt();
 		
 	}
 	
@@ -59,7 +61,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extFieldDeclImpl() {
-		return super.extFieldDeclImpl();
+//		return super.extFieldDeclImpl();
+		return new EquGenFieldDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -67,7 +70,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extLocalDeclImpl() {
-		return super.extLocalDeclImpl();
+//		return super.extLocalDeclImpl();
+		return new EquGenLocalDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -75,7 +79,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extCodeDeclImpl() {
-		return super.extCodeDeclImpl();
+//		return super.extCodeDeclImpl();
+		return new EquGenCodeDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -83,7 +88,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extLocalClassDeclImpl() {
-		return super.extLocalClassDeclImpl();
+//		return super.extLocalClassDeclImpl();
+		return new EquGenLocalClassDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -91,7 +97,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extAnnotationElemDeclImpl() {
-		return super.extAnnotationElemDeclImpl();
+//		return super.extAnnotationElemDeclImpl();
+		return new EquGenAnnotationElemDeclExt();
 	}
 	
 	/* (non-Javadoc)
@@ -99,7 +106,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extEnumConstantDeclImpl() {
-		return super.extEnumConstantDeclImpl();
+//		return super.extEnumConstantDeclImpl();
+		return new EquGenEnumConstantDeclExt();
 	}
 	
 	/* (non-Javadoc)
