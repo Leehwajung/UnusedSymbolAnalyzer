@@ -25,8 +25,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * @see polyglot.ast.AbstractExtFactory_c#extClassDeclImpl()
 	 */
 	@Override
-	protected Ext extClassDeclImpl() {
-		return super.extClassDeclImpl();
+	protected Ext extClassDeclImpl() {	// 오버라이딩하고
+		return new EquGenClassDeclExt();
 	}
 	
 	/* (non-Javadoc)

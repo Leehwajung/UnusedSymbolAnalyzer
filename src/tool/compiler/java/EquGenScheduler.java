@@ -14,7 +14,7 @@ import tool.compiler.java.visit.EquGenerator;
 
 public class EquGenScheduler extends JL7Scheduler {
 
-	public EquGenScheduler(JL7ExtensionInfo extInfo) {
+	public EquGenScheduler(JL7ExtensionInfo extInfo) {	// tool.compiler.java.ExtensionInfo??
 		super(extInfo);
 	}
 
@@ -22,7 +22,7 @@ public class EquGenScheduler extends JL7Scheduler {
 		ExtensionInfo extInfo = job.extensionInfo();
 		TypeSystem ts = extInfo.typeSystem();
 		NodeFactory nf = extInfo.nodeFactory();
-		Goal g = new VisitorGoal(job, new EquGenerator(job, ts, nf));
+		Goal g = new VisitorGoal(job, new EquGenerator(job, ts, nf));	// TODO: TypeChecked???
 		try {
 			g.addPrerequisiteGoal(TypeChecked(job), this);
 		} catch (CyclicDependencyException e) {
@@ -42,4 +42,16 @@ public class EquGenScheduler extends JL7Scheduler {
 		}
 		return internGoal(goal);
 	}
+	
+	// Add a pass before CodeGenerated
+//	@Override
+//	public Goal CodeGenerated(Job job) {
+//		Goal cgGoal = super.CodeGenerated(job);
+//		try {
+//			cgGoal.addPrerequisiteGoal(EquGenerated(job), this);
+//		} catch(CyclicDependencyException e) {
+//			throw new InternalCompilerError(e);
+//		}
+//		return internGoal(cgGoal);
+//	}
 }

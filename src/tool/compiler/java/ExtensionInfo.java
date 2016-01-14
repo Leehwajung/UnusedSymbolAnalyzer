@@ -1,8 +1,5 @@
 package tool.compiler.java;
 
-//import polyglot.lex.Lexer;
-//import tool.compiler.java.parse.Lexer_c;
-//import tool.compiler.java.parse.Grm;
 import tool.compiler.java.ast.*;
 import tool.compiler.java.types.*;
 import polyglot.ast.*;
@@ -10,10 +7,6 @@ import polyglot.ext.jl5.ast.*;
 import polyglot.ext.jl7.ast.*;
 import polyglot.frontend.*;
 import polyglot.types.*;
-//import polyglot.util.*;
-
-//import java.io.*;
-//import java.util.Set;
 
 /**
  * Extension information for equgen extension.
@@ -27,35 +20,29 @@ public class ExtensionInfo extends polyglot.ext.jl7.JL7ExtensionInfo {
 	
 	@Override
 	public String defaultFileExtension() {
-		return super.defaultFileExtension();
+		return super.defaultFileExtension();	// 확장자
 	}
 	
 	@Override
 	public String compilerName() {
-		return super.defaultFileExtension();
+		return super.defaultFileExtension();	// 컴파일러 이름	// TODO: ???
 	}
 	
-//	@Override
-//	public Parser parser(Reader reader, Source source, ErrorQueue eq) {
-//		Lexer lexer = new Lexer_c(reader, source, eq);
-//		Grm grm = new Grm(lexer, ts, nf, eq);
-//		return new CupParser(grm, source, eq);
-//	}
+	// public Parser parser(Reader reader, Source source, ErrorQueue eq); 
 	
-//	@Override
-//	public Set<String> keywords() {
-//		return new Lexer_c(null).keywords();
-//	}
+	// public Set<String> keywords();
 	
 	@Override
 	protected NodeFactory createNodeFactory() {
-		return new EquGenNodeFactory_c(EquGenLang_c.instance,
-				new EquGenExtFactory_c(new JL7ExtFactory_c(new JL5ExtFactory_c())));
+		// return new EquGenNodeFactory_c(EquGenLang_c.instance,	// 노드 팩토리
+		// new EquGenExtFactory_c());	// 확장 노드 팩토리
+		return new EquGenNodeFactory_c(EquGenLang_c.instance,							// 노드 팩토리
+				new EquGenExtFactory_c(new JL7ExtFactory_c(new JL5ExtFactory_c())));	// 확장 노드 팩토리
 	}
 	
 	@Override
 	protected TypeSystem createTypeSystem() {
-		return new EquGenTypeSystem_c();
+		return new EquGenTypeSystem_c();	// 타입 시스템
 	}
 	
 	@Override

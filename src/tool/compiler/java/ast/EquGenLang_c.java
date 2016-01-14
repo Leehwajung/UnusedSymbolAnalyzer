@@ -28,7 +28,7 @@ public class EquGenLang_c extends J7Lang_c implements EquGenLang {
 	
 	@Override
 	protected NodeOps NodeOps(Node n) {
-		return equgenExt(n);
+		return equgenExt(n);	// TODO: equgenExt???
 	}
 	
 	// TODO:  Implement dispatch methods for new AST operations.

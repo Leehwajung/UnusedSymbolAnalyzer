@@ -6,8 +6,10 @@ import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
 public class EquGenExt extends Ext_c implements EquGenOps {
+	// TODO: Not JL7Ext, but Ext_c to override lang()!!!
+	
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	public static EquGenExt ext(Node n) {
 		Ext e = n.ext();
 		while (e != null && !(e instanceof EquGenExt)) {
@@ -20,7 +22,7 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 		return (EquGenExt) e;
 	}
 
-	@Override
+	@Override	// TODO: Must extend Ext_c, not JL7Ext!!!
 	public final EquGenLang lang() {
 		return EquGenLang_c.instance;
 	}

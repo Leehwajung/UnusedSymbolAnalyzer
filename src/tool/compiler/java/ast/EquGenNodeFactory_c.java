@@ -6,7 +6,7 @@ import polyglot.ext.jl7.ast.*;
  * NodeFactory for equgen extension.
  */
 public class EquGenNodeFactory_c
-	extends JL7NodeFactory_c implements EquGenNodeFactory {
+		extends JL7NodeFactory_c implements EquGenNodeFactory {
 	
 	public EquGenNodeFactory_c(EquGenLang lang, EquGenExtFactory extFactory) {
 		super(lang, extFactory);
