@@ -15,18 +15,14 @@ public class EquGenFieldDeclExt extends EquGenExt {
 //		Report.report(0, "Field declaration: " + fldDecl.name());
 		
 		/**
-		 *  형식: F(Container, field) = FieldType
+		 *  형식: F(<ClassBoundVariables>, Container, field) = FieldType
 		 */
-//		// Ver. 2 Bound Variables-------------------------------------------------------------------------------------
-//		HashSet<String> boundVars = getContainerTypeParamNames(fldDecl.fieldInstance().container());
-//		String typeParamsStr = "";
-//		if(!boundVars.isEmpty()) {
-//			typeParamsStr += boundVars + ", ";
-//		}
-//		//-----------------------------------------------------------------------------------------------------------------
+//		String ClassBoundVariablesStr = toStringWithGenricBracket(
+//				((JL5FieldDeclExt) JL5FieldDeclExt.ext(this.node())).typeParams());
+		String ClassBoundVariablesStr = "<>";
 		
-		Report.report(1, "F(" + /*typeParamsStr+*/ fldDecl.fieldInstance().container() + ", " + fldDecl.name() + ") = " + fldDecl.type());
-//		 fldDecl.memberInstance().
+		Report.report(1, "F(" + ClassBoundVariablesStr + ", " + fldDecl.fieldInstance().container() + ", " + fldDecl.name() + ") = " + fldDecl.type());
+
 		return super.equGenEnter(v);
 	}
 

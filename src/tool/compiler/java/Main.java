@@ -25,7 +25,7 @@ public class Main {
 			// polyglot.ext.jl7.JL7ExtensionInfo());
 			
 			// For Java 7 plus an extra compilation pass
-			polyglotMain.start(/*args*/getPolyglotArgs(args), new tool.compiler.java.ExtensionInfo());
+			polyglotMain.start(getPolyglotArgs(args), new tool.compiler.java.ExtensionInfo());
 			
 		} catch (polyglot.main.Main.TerminationException e) {
 			System.err.println(e.getMessage());
