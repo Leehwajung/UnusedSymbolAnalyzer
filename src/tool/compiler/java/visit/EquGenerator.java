@@ -39,14 +39,14 @@ public class EquGenerator extends ContextVisitor {
 //			throws SemanticException {
 //
 ////		reportPackage(n);
-//		
-//		return super.enterCall(parent, n);
+////		System.out.println("enterCall1");
+//		return lang().equGenEnter(parent, n, this);
 //	}
 	
 	@Override
 	protected NodeVisitor enterCall(Node n)
 			throws SemanticException {
-		
+//		System.out.println("enterCall2");
 		return lang().equGenEnter(n, this);	// 추가한 메소드 호출 
 	}
 	
@@ -79,4 +79,6 @@ public class EquGenerator extends ContextVisitor {
 	protected Object clone() throws CloneNotSupportedException {
 		return super.clone();
 	}
+	
+	
 }

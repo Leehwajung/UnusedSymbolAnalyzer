@@ -1,7 +1,5 @@
 package tool.compiler.java.ast;
 
-import java.util.HashSet;
-
 import polyglot.ast.FieldDecl;
 import polyglot.ast.Node;
 import polyglot.main.Report;
@@ -19,15 +17,15 @@ public class EquGenFieldDeclExt extends EquGenExt {
 		/**
 		 *  형식: F(Container, field) = FieldType
 		 */
-		// Ver. 2 Bound Variables-------------------------------------------------------------------------------------
-		HashSet<String> boundVars = getContainerTypeParamNames(fldDecl.fieldInstance().container());
-		String typeParamsStr = "";
-		if(!boundVars.isEmpty()) {
-			typeParamsStr += boundVars + ", ";
-		}
-		//-----------------------------------------------------------------------------------------------------------------
+//		// Ver. 2 Bound Variables-------------------------------------------------------------------------------------
+//		HashSet<String> boundVars = getContainerTypeParamNames(fldDecl.fieldInstance().container());
+//		String typeParamsStr = "";
+//		if(!boundVars.isEmpty()) {
+//			typeParamsStr += boundVars + ", ";
+//		}
+//		//-----------------------------------------------------------------------------------------------------------------
 		
-		Report.report(1, "F(" + typeParamsStr+ fldDecl.fieldInstance().container() + ", " + fldDecl.name() + ") = " + fldDecl.type());
+		Report.report(1, "F(" + /*typeParamsStr+*/ fldDecl.fieldInstance().container() + ", " + fldDecl.name() + ") = " + fldDecl.type());
 //		 fldDecl.memberInstance().
 		return super.equGenEnter(v);
 	}

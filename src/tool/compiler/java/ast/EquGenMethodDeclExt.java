@@ -2,15 +2,11 @@ package tool.compiler.java.ast;
 
 import polyglot.ast.MethodDecl;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.ast.*;
 import polyglot.ext.jl5.types.*;
 import polyglot.main.Report;
-import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
-
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
 
 public class EquGenMethodDeclExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
@@ -18,62 +14,32 @@ public class EquGenMethodDeclExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		MethodDecl mtdDecl = (MethodDecl) this.node();
-//		Report.report(0, "Method declaration: " + mtdDecl.name());
+		// Report.report(0, "Method declaration: " + mtdDecl.name());
 		
 		/**
-		 * 형식: M(Container, method) = (FormalTypes)->ReturnType
+		 * 형식: M(<ClassBoundVariables>, Container, method) = <BoundTypeParams> (FormalTypes)->ReturnType
 		 */
-		// 
-		String typeParamsStr = "";
+//		List<Node> dd = visitList(new ArrayList<Node>(), v);
+//		String ClassBoundVariablesStr = toStringWithGenricBracket(
+//				((JL5MethodDeclExt) JL5MethodDeclExt.ext(this.node())).typeParams());
+//				dd);
+//		String ClassBoundVariablesStr = p;
+//		v.context().currentClass().container().
 		
-		HashSet<String> boundVars = getContainerTypeParamNames(mtdDecl.methodInstance().container());
+		String ClassBoundVariablesStr = toStringWithGenricBracket(
+				((JL5MethodDeclExt) JL5MethodDeclExt.ext(this.node())).typeParams());
 		
-		// 
-		List<TypeVariable> typeParams = ((JL5MethodInstance) mtdDecl.methodInstance()).typeParams();
-		for(TypeVariable type: typeParams) {
-			boundVars.add(type.toString());
-		}
 		
-//		if(!typeParams.isEmpty()) {
-//			typeParamsStr = typeParams.toString() + ", ";
-//		}
+		String BoundTypeParamsStr = toStringWithGenricBracket(
+				((JL5MethodInstance)mtdDecl.methodInstance()).typeParams());
+
+//		System.out.println(((MethodDecl_c)((JL5Ext)((JL7Ext)(pred())).pred())).pred())).pred()));
 		
-		// Ver. 2 Bound Variables---------------------------------------------------------------------------------------------------------------
-//		HashSet<String> boundVars = new HashSet<>();
-//		StringTokenizer tokenizer = new StringTokenizer(mtdDecl.methodInstance().container().toString(), GENERICDELIM);
-//		tokenizer.nextToken();
-//		if(tokenizer.hasMoreTokens()) boundVars.add(tokenizer.nextToken());
-		//-------------------------------------------------------------------------------------------------------------------------------------------
-		
-		// 
-		String formalTypesStr = "";
-		Iterator<? extends Type> formalTypesIterator = mtdDecl.methodInstance().formalTypes().iterator();
-		boolean hasNext = formalTypesIterator.hasNext();
-		if(hasNext) do {
-			formalTypesStr += formalTypesIterator.next();
-			
-			// ------------------------------------------------------------
-//			Type formalType = formalTypesIterator.next();
-//			formalTypesStr += formalType;
-//			tokenizer = new StringTokenizer(formalType.toString(), GENERICDELIM);
-//			tokenizer.nextToken();
-//			if(tokenizer.hasMoreTokens()) boundVars.add(tokenizer.nextToken());
-			//-----------------------------------------------------------------------------------------
-			
-			hasNext = formalTypesIterator.hasNext();
-			if(hasNext) {
-				formalTypesStr += ", ";
-			}
-		} while(hasNext);
-		
-		//-----------------
-		if(!boundVars.isEmpty()) {
-			typeParamsStr += boundVars + ", ";
-		}
-		//---------------------------------------------
-		
-		// Report
-		Report.report(1, "M(" + typeParamsStr + mtdDecl.methodInstance().container() + ", " + mtdDecl.name() + ") = (" + formalTypesStr/*mtdDecl.methodInstance().formalTypes()*/ + ") -> " + mtdDecl.returnType());
+		Report.report(1,
+				"M(" + ClassBoundVariablesStr + ", " + mtdDecl.methodInstance().container() + ", " + mtdDecl.name()
+						+ ") = " + BoundTypeParamsStr + " "
+						+ toStringWithMethodParamBracket(mtdDecl.methodInstance().formalTypes()) + " -> "
+						+ mtdDecl.returnType());
 		
 		return super.equGenEnter(v);
 	}
@@ -82,4 +48,32 @@ public class EquGenMethodDeclExt extends EquGenExt {
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);
 	}
+
+	/* (non-Javadoc)
+	 * @see tool.compiler.java.ast.EquGenExt#equGenEnter(polyglot.ast.Node, tool.compiler.java.visit.EquGenerator)
+	 */
+//	@Override
+//	public EquGenerator equGenEnter(Node parent, EquGenerator v) {
+//		// TODO Auto-generated method stub
+//		MethodDecl mtdDecl = (MethodDecl) this.node();
+//		// Report.report(0, "Method declaration: " + mtdDecl.name());
+//		
+//		/**
+//		 * 형식: M(<ClassBoundVariables>, Container, method) = <BoundTypeParams> (FormalTypes)->ReturnType
+//		 */
+//		String ClassBoundVariablesStr = toStringWithGenricBracket(
+//				((JL5MethodDeclExt) JL5MethodDeclExt.ext(parent)).typeParams());
+//		String BoundTypeParamsStr = toStringWithGenricBracket(
+//				((JL5MethodInstance) mtdDecl.methodInstance()).typeParams());
+//		
+//		Report.report(1,
+//				"M(" + ClassBoundVariablesStr + ", " + mtdDecl.methodInstance().container() + ", " + mtdDecl.name()
+//						+ ") = " + BoundTypeParamsStr + " "
+//						+ toStringWithMethodParamBracket(mtdDecl.methodInstance().formalTypes()) + " -> "
+//						+ mtdDecl.returnType());
+//		
+//		return super.equGenEnter(v);
+//	}
+	
+	
 }
