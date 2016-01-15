@@ -117,4 +117,15 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	protected Ext extEnumDeclImpl() {
 		return super.extEnumDeclImpl();
 	}
+
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extStmtImpl()
+	 */
+	@Override
+	protected Ext extStmtImpl() {
+//		return super.extStmtImpl();
+		return new EquGenStmtExt();
+	}
+	
+	
 }

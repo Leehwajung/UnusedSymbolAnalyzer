@@ -72,20 +72,31 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 		return MethodParamBracketLeft + toStringWithNoBracket(list) + MethodParamBracketRight;
 	}
 	
+	// String conversion
+
+	/**
+	 * Returns a string representation of list. The string representation 
+	 * consists of a list of the list's elements in the order they are returned 
+	 * by its iterator. Adjacent elements are separated by the characters
+	 * <tt>", "</tt> (comma and space). Elements are converted to strings
+	 * as by {@link String#valueOf(Object)}.
+	 *
+	 * @param list List object to represent string
+	 * @return a string representation of list
+	 */
 	private static final String toStringWithNoBracket(List<?> list) {
-		String result = "";
-		Iterator<?> iterator = list.iterator();
-		boolean hasNext = iterator.hasNext();
+		Iterator<?> it = list.iterator();
 		
-		if(hasNext) do {
-			result += iterator.next();
-			hasNext = iterator.hasNext();
-			if(hasNext) {
-				result += ", ";
-			}
-		} while(hasNext);
+		if (!it.hasNext())
+			return "";
 		
-		return result;
+		StringBuilder sb = new StringBuilder();
+		for (;;) {
+			sb.append(it.next());
+			if (!it.hasNext())
+				return sb.toString();
+			sb.append(',').append(' ');
+		}
 	}
 
 //	@Override

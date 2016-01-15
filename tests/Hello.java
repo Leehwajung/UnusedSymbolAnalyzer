@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Hello {
 	private int member;
 
 	public static void main(String[] args) {
+		int x;
 	}
 }
 
