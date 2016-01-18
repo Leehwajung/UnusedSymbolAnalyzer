@@ -1,7 +1,5 @@
 package tool.compiler.java.ast;
 
-import java.util.List;
-
 import polyglot.ast.ClassDecl;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.ast.JL5ClassDeclExt;
@@ -9,6 +7,8 @@ import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
+
+import java.util.List;
 
 public class EquGenClassDeclExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();

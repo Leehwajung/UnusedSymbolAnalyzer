@@ -1,18 +1,18 @@
 package tool.compiler.java.ast;
 
+import polyglot.ast.Initializer;
 import polyglot.ast.Node;
-import polyglot.ast.Stmt;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
-public class EquGenStmtExt extends EquGenExt {
+public class EquGenInitializerExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
-		Stmt stmt = (Stmt)this.node();
-		Report.report(0, "stmt Use: " + stmt.toString());
+		Initializer initializer = (Initializer)this.node();
+		Report.report(0, "Initializer: " + initializer);
 		
 		return super.equGenEnter(v);
 	}
