@@ -1,18 +1,18 @@
 package tool.compiler.java.ast;
 
-import polyglot.ast.Stmt;
+import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.ast.Node;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
-public class EquGenStmtExt extends EquGenExt {
+public class EquGenParamTypeNodeExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
-		Stmt stmt = (Stmt)this.node();
-		Report.report(0, "stmt Use: " + stmt);
+		ParamTypeNode ptnd = (ParamTypeNode)this.node();
+		Report.report(0, "Parameter Type Node: " + ptnd);
 		
 		return super.equGenEnter(v);
 	}

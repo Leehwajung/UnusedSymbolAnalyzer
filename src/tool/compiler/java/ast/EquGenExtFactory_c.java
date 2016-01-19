@@ -118,6 +118,59 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/** !ClassMember **/
 	
+	
+	/**
+	 * TypeNode
+	 */
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extTypeNodeImpl() {
+//		return super.extTypeNodeImpl();
+		return new EquGenTypeNodeExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extCanonicalTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extCanonicalTypeNodeImpl() {
+//		return super.extCanonicalTypeNodeImpl();
+		return new EquGenCanonicalTypeNodeExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extArrayTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extArrayTypeNodeImpl() {
+//		return super.extArrayTypeNodeImpl();
+		return new EquGenArrayTypeNodeExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extAmbTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extAmbTypeNodeImpl() {
+//		return super.extAmbTypeNodeImpl();
+		return new EquGenAmbTypeNodeExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extParamTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extParamTypeNodeImpl() {
+//		return super.extParamTypeNodeImpl();
+		return new EquGenParamTypeNodeExt();
+	}
+	
+	/** !TypeNode **/
+	
+	
 	/**
 	 * Stmt
 	 */
