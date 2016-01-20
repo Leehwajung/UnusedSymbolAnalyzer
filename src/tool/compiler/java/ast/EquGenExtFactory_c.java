@@ -21,12 +21,135 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	// TODO: Override factory methods for new extension nodes in the current
 	// extension.
 	
+	/**
+	 * Id<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extIdImpl()
+	 */
+	@Override
+	protected Ext extIdImpl() {
+		// TODO Auto-generated method stub
+		return super.extIdImpl();
+	}
 	
 	/**
-	 *  ClassMember
+	 * SourceFile<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extSourceFileImpl()
 	 */
+	@Override
+	protected Ext extSourceFileImpl() {
+		// TODO Auto-generated method stub
+		return super.extSourceFileImpl();
+	}
 	
-	/* (non-Javadoc)
+	/**
+	 * SourceCollection<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extSourceCollectionImpl()
+	 */
+	@Override
+	protected Ext extSourceCollectionImpl() {
+		// TODO Auto-generated method stub
+		return super.extSourceCollectionImpl();
+	}
+	
+	/**
+	 * Import<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extImportImpl()
+	 */
+	@Override
+	protected Ext extImportImpl() {
+		// TODO Auto-generated method stub
+		return super.extImportImpl();
+	}
+	
+	/**
+	 * PackageNode<:QualifierNode<:Prefix<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extPackageNodeImpl()
+	 */
+	@Override
+	protected Ext extPackageNodeImpl() {
+		// TODO Auto-generated method stub
+		return super.extPackageNodeImpl();
+	}
+	
+	/**
+	 * AmbQualifierNode<:QualifierNode<:Prefix<:Node		<br>
+	 * AmbQualifierNode<:Ambiguous<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extAmbQualifierNodeImpl()
+	 */
+	@Override
+	protected Ext extAmbQualifierNodeImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbQualifierNodeImpl();
+	}
+	
+	/**
+	 * AmbReceiver<:Receiver<:Prefix<:Node		<br>
+	 * AmbReceiver<:Ambiguous<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extAmbReceiverImpl()
+	 */
+	@Override
+	protected Ext extAmbReceiverImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbReceiverImpl();
+	}
+	
+	/**
+	 * AmbPrefix<:Prefix<:Node		<br>
+	 * AmbPrefix<:Ambiguous<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extAmbPrefixImpl()
+	 */
+	@Override
+	protected Ext extAmbPrefixImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbPrefixImpl();
+	}
+	
+	/**
+	 * Term<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extTermImpl()
+	 */
+	@Override
+	protected Ext extTermImpl() {
+		// TODO Auto-generated method stub
+		return super.extTermImpl();
+	}
+
+	/**
+	 * ClassBody<:Term<:Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extClassBodyImpl()
+	 */
+	@Override
+	protected Ext extClassBodyImpl() {
+		// TODO Auto-generated method stub
+		return super.extClassBodyImpl();
+	}
+	
+	/**
+	 * ElementValueArrayInit<:Term<:Node
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extElementValueArrayInitImpl()
+	 */
+	@Override
+	protected Ext extElementValueArrayInitImpl() {
+		// TODO Auto-generated method stub
+		return super.extElementValueArrayInitImpl();
+	}
+
+	/**
+	 * ElementValuePair<:Term<:Node
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extElementValuePairImpl()
+	 */
+	@Override
+	protected Ext extElementValuePairImpl() {
+		// TODO Auto-generated method stub
+		return super.extElementValuePairImpl();
+	}
+	
+	/******************
+	 * ClassMember *
+	 ******************/
+	
+	/**
+	 * ClassMember<:Term<:Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extClassMemberImpl()
 	 */
 	@Override
@@ -42,6 +165,14 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	protected Ext extClassDeclImpl() {	// 오버라이딩하고
 //		return super.extClassDeclImpl();
 		return new EquGenClassDeclExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extEnumDeclImpl()
+	 */
+	@Override
+	protected Ext extEnumDeclImpl() {
+		return super.extEnumDeclImpl();
 	}
 	
 	/* (non-Javadoc)
@@ -168,6 +299,42 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 		return new EquGenParamTypeNodeExt();
 	}
 	
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extAmbTypeInstantiationImpl()
+	 */
+	@Override
+	protected Ext extAmbTypeInstantiationImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbTypeInstantiationImpl();
+	}
+
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extAmbWildCardImpl()
+	 */
+	@Override
+	protected Ext extAmbWildCardImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbWildCardImpl();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl7.ast.JL7AbstractExtFactory_c#extAmbDiamondTypeNodeImpl()
+	 */
+	@Override
+	protected Ext extAmbDiamondTypeNodeImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbDiamondTypeNodeImpl();
+	}
+
+	/* (non-Javadoc)
+	 * @see polyglot.ext.jl7.ast.JL7AbstractExtFactory_c#extAmbUnionTypeImpl()
+	 */
+	@Override
+	protected Ext extAmbUnionTypeImpl() {
+		// TODO Auto-generated method stub
+		return super.extAmbUnionTypeImpl();
+	}
+	
 	/** !TypeNode **/
 	
 	
@@ -203,12 +370,4 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/** !Stmt **/
-	
-	/* (non-Javadoc)
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extEnumDeclImpl()
-	 */
-	@Override
-	protected Ext extEnumDeclImpl() {
-		return super.extEnumDeclImpl();
-	}
 }
