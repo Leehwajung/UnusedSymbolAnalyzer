@@ -250,9 +250,9 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/** !ClassMember **/
 	
 	
-	/**
-	 * TypeNode
-	 */
+	/****************
+	 * TypeNode *
+	 ****************/
 	
 	/* (non-Javadoc)
 	 * @see polyglot.ast.AbstractExtFactory_c#extTypeNodeImpl()
@@ -338,9 +338,9 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/** !TypeNode **/
 	
 	
-	/**
-	 * Stmt
-	 */
+	/*********
+	 * Stmt *
+	 *********/
 	
 	/* (non-Javadoc)
 	 * @see polyglot.ast.AbstractExtFactory_c#extStmtImpl()
