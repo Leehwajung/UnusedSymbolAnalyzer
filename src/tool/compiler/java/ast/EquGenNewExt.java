@@ -1,18 +1,22 @@
 package tool.compiler.java.ast;
 
+import polyglot.ast.New;
 import polyglot.ast.Node;
-import polyglot.ast.ProcedureDecl;
+import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
-public class EquGenProcedureDeclExt extends EquGenExt {
+public class EquGenNewExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
-		ProcedureDecl pcdDecl = (ProcedureDecl) this.node();
-		Report.report(0, "Procedure declaration: " + pcdDecl.name());
+		New nw = (New) this.node();
+		Report.report(0, "New: " + nw);
+		
+		/* Class 사용: Type of new object */
+		v.markOnClassEnv((JL5ClassType) nw.type());
 		
 		return super.equGenEnter(v);
 	}

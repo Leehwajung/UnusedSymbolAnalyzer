@@ -13,6 +13,7 @@ public class EquGenAnnotationElemDeclExt extends EquGenExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AnnotationElemDecl ateDecl = (AnnotationElemDecl) this.node();
 		Report.report(0, "Annotation Elem declaration: " + ateDecl.name());
+		
 		return super.equGenEnter(v);
 	}
 

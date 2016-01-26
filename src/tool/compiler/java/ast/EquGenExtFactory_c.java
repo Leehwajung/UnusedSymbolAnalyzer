@@ -370,4 +370,58 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/** !Stmt **/
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extCallImpl()
+	 */
+	@Override
+	protected Ext extCallImpl() {
+//		return super.extCallImpl();
+		return new EquGenCallExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extAssignImpl()
+	 */
+	@Override
+	protected Ext extAssignImpl() {
+//		return super.extAssignImpl();
+		return new EquGenAssignExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extCastImpl()
+	 */
+	@Override
+	protected Ext extCastImpl() {
+//		return super.extCastImpl();
+		return new EquGenCastExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extInstanceofImpl()
+	 */
+	@Override
+	protected Ext extInstanceofImpl() {
+//		return super.extInstanceofImpl();
+		return new EquGenInstanceofExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extNewImpl()
+	 */
+	@Override
+	protected Ext extNewImpl() {
+//		return super.extNewImpl();
+		return new EquGenNewExt();
+	}
+	
+	/* (non-Javadoc)
+	 * @see polyglot.ast.AbstractExtFactory_c#extNewArrayImpl()
+	 */
+	@Override
+	protected Ext extNewArrayImpl() {
+//		return super.extNewArrayImpl();
+		return new EquGenNewArrayExt();
+	}
 }
