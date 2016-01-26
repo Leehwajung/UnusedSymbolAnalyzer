@@ -47,12 +47,4 @@ public class EquGenLang_c extends J7Lang_c implements EquGenLang {
 	public Node equGen(Node n, EquGenerator v) {
 		return equgenOps(n).equGen(v);
 	}
-
-//	@Override
-//	public EquGenerator equGenEnter(Node parent, Node n, EquGenerator v) {
-//		// TODO Auto-generated method stub
-//		return equgenOps(n).equGenEnter(parent, v);
-//	}
-	
-	
 }

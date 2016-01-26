@@ -6,6 +6,11 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * ParamTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
+ * ParamTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+ * @author LHJ
+ */
 public class EquGenParamTypeNodeExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 

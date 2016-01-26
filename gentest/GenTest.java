@@ -76,7 +76,7 @@ class ASDF {
 	}
 }
 
-class GenTest2 extends GenTest4{
+class GenTest2 extends GenTest4 implements GenTest3{
 	public static int st;
 	private int member;
 	private double m55 = 5.5;

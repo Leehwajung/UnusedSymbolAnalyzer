@@ -11,7 +11,7 @@ import java.util.List;
 public class EquGenExt extends Ext_c implements EquGenOps {
 	// TODO: Not JL7Ext, but Ext_c to override lang()!!!
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	private static final char GenricBracketLeft = '<';
 	private static final char GenricBracketRight = '>';
 	private static final char MethodParamBracketLeft = '(';
@@ -30,7 +30,7 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 		return (EquGenExt) e;
 	}
 	
-	@Override // TODO: Must extend Ext_c, not JL7Ext!!!
+	@Override	// TODO: Must extend Ext_c, not JL7Ext!!!
 	public final EquGenLang lang() {
 		return EquGenLang_c.instance;
 	}
@@ -54,16 +54,6 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 		return node();
 	}
 	
-//	protected final HashSet<String> getContainerTypeParamNames(ReferenceType container) {
-//		HashSet<String> boundVars = new HashSet<>();
-//		StringTokenizer tokenizer = new StringTokenizer(container.toString(), GENERICDELIM);
-//		tokenizer.nextToken();
-//		while(tokenizer.hasMoreTokens()){
-//			boundVars.add(tokenizer.nextToken());
-//		}
-//		return boundVars;
-//	}
-	
 	protected static final String toStringWithGenricBracket(List<?> list) {
 		return GenricBracketLeft + toStringWithNoBracket(list) +GenricBracketRight;
 	}
@@ -72,8 +62,9 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 		return MethodParamBracketLeft + toStringWithNoBracket(list) + MethodParamBracketRight;
 	}
 	
+	
 	// String conversion
-
+	
 	/**
 	 * Returns a string representation of list. The string representation 
 	 * consists of a list of the list's elements in the order they are returned 
@@ -98,10 +89,4 @@ public class EquGenExt extends Ext_c implements EquGenOps {
 			sb.append(',').append(' ');
 		}
 	}
-
-//	@Override
-//	public EquGenerator equGenEnter(Node parent, EquGenerator v) {
-//		// TODO Auto-generated method stub
-//		return v;
-//	}
 }

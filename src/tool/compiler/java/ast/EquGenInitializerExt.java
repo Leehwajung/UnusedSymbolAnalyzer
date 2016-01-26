@@ -6,13 +6,18 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * Initializer <: CodeDecl <: ClassMember <: Term <: Node	<br>
+ * Initializer <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenInitializerExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
-		Initializer initializer = (Initializer)this.node();
-		Report.report(0, "Initializer: " + initializer);
+		Initializer init = (Initializer)this.node();
+		Report.report(0, "Initializer: " + init);
 		
 		return super.equGenEnter(v);
 	}

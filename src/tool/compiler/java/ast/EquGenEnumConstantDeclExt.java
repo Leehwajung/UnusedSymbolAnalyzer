@@ -6,6 +6,10 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * EnumConstantDecl <: ClassMember <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenEnumConstantDeclExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 

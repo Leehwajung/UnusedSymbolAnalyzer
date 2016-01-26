@@ -26,8 +26,7 @@ public class EquGenerator extends ContextVisitor {
 	private static HashSet<JL5ProcedureInstance> usedMethods;
 	private static HashSet<JL5FieldInstance> usedFields;
 	
-//	private static JL5ProcedureInstance currentMethodEnv;
-	
+	private static JL5ProcedureInstance currentMethodEnv;
 	
 	private static final boolean defaultUse = false;
 	
@@ -119,9 +118,9 @@ public class EquGenerator extends ContextVisitor {
 		checkMethodEnv();
 		checkFieldEnv();
 		
-		Report.report(1, classEnv.toString());
-//		Report.report(1, methodEnv.toString());
-//		Report.report(1, fieldEnv.toString());
+		Report.report(1, "Class Env:\t\t" + classEnv);
+		Report.report(1, "Method Env:\t" + methodEnv);
+		Report.report(1, "Field Env:\t\t" + fieldEnv);
 		
 		super.finish(ast);
 	}

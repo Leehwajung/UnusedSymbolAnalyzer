@@ -7,6 +7,10 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * New <: Expr <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenNewExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 

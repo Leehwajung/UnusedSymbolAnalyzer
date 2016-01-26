@@ -6,6 +6,11 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * ProcedureDecl <: CodeDecl <: ClassMember <: Term <: Node	<br>
+ * ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenProcedureDeclExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 

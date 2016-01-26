@@ -5,6 +5,5 @@ import tool.compiler.java.visit.EquGenerator;
 
 public interface EquGenOps extends NodeOps {
 	EquGenerator equGenEnter(EquGenerator v);
-//	EquGenerator equGenEnter(Node parent, EquGenerator v);
 	Node equGen(EquGenerator v);
 }

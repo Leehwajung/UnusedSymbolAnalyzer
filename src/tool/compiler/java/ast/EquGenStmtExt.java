@@ -6,6 +6,10 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * Stmt <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenStmtExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
@@ -13,23 +17,6 @@ public class EquGenStmtExt extends EquGenExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Stmt stmt = (Stmt)this.node();
 		Report.report(0, "Stmt: " + stmt);
-		
-//		String dd = "";
-//		for(Node no: v.environment.keySet()) {
-//			try {
-//				dd += ((Node)no).toString();
-//			} catch (ClassCastException e){
-//				
-//			}
-//		}
-//		
-//		Report.report(0, "stmt Use: " + stmt + " ::::::: " 
-////				+ v.environment.size() + "................" + v.environment);
-////				+ v.context().currentClassScope());
-//				+ v.environment);
-		
-//		System.out.println(v.environment);
-//		v.visitChildren()
 		
 		return super.equGenEnter(v);
 	}

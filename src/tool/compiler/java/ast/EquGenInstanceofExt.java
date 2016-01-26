@@ -7,6 +7,10 @@ import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
+/**
+ * Instanceof <: Expr <: Term <: Node
+ * @author LHJ
+ */
 public class EquGenInstanceofExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
@@ -17,7 +21,6 @@ public class EquGenInstanceofExt extends EquGenExt {
 		
 		/* Class 사용: Compare type of "instanceof" */
 		v.markOnClassEnv((JL5ClassType) insof.compareType().type());
-//		System.out.println(insof.compareType().type());
 		
 		return super.equGenEnter(v);
 	}
