@@ -14,6 +14,7 @@ public class GenTest {
 	private int vv = aa;
 	
 	public void main(String[] args) {
+		
 		int x = 7;
 		mmmmm = method(1.1);
 		char dd;
@@ -25,6 +26,8 @@ public class GenTest {
 	}
 	
 	private char method(double dd) {
+		int aa = 6;
+		int ff = aa;
 		mmmmm = 'b';
 		member = (int)dd;
 		String asdf;
@@ -34,8 +37,11 @@ public class GenTest {
 		int d, x = 3;
 		d=x;
 		as.zxcv(3.3);
+		for(ff = 0; ff <10; ff++) {
+			
+		}
 		
-		
+//		char asdfffffff = char2;
 		
 		return 'a';
 	}
@@ -52,6 +58,8 @@ public class GenTest {
 		
 		if(asd instanceof GenTest2) {
 			char asdfffffff = char2;
+			char qqqqqq;
+			qqqqqq= asdfffffff;
 		}
 		
 		return 'a';

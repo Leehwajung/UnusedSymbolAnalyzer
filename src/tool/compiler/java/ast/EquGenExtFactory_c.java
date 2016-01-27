@@ -57,8 +57,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extImportImpl() {
-		// TODO Auto-generated method stub
-		return super.extImportImpl();
+//		return super.extImportImpl();
+		return new EquGenImportExt();
 	}
 	
 	/**

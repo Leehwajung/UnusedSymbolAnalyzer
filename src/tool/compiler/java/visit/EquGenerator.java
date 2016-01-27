@@ -20,11 +20,13 @@ public class EquGenerator extends ContextVisitor {
 	private static HashMap<JL5ClassType, Boolean> classEnv;
 	private static HashMap<JL5ProcedureInstance, Boolean> methodEnv;
 	private static HashMap<JL5FieldInstance, Boolean> fieldEnv;
+	private static HashMap<JL5LocalInstance, Boolean> localEnv;
 	
 	/* Used */
 	private static HashSet<JL5ClassType> usedclasses;
 	private static HashSet<JL5ProcedureInstance> usedMethods;
 	private static HashSet<JL5FieldInstance> usedFields;
+	private static HashSet<JL5LocalInstance> usedLocals;
 	
 	private static JL5ProcedureInstance currentMethodEnv;
 	
@@ -34,10 +36,12 @@ public class EquGenerator extends ContextVisitor {
 		classEnv = new HashMap<>();
 		methodEnv = new HashMap<>();
 		fieldEnv = new HashMap<>();
+		localEnv = new HashMap<>();
 		
 		usedclasses = new HashSet<>();
 		usedMethods = new HashSet<>();
 		usedFields = new HashSet<>();
+		usedLocals = new HashSet<>();
 	}
 	
 	public EquGenerator(Job job, TypeSystem ts, NodeFactory nf) {
@@ -117,10 +121,13 @@ public class EquGenerator extends ContextVisitor {
 		checkClassEnv();
 		checkMethodEnv();
 		checkFieldEnv();
+		checkLocalEnv();
 		
-		Report.report(1, "Class Env:\t\t" + classEnv);
+//		Report.report(1, "Class Env:\t\t" + classEnv);
 		Report.report(1, "Method Env:\t" + methodEnv);
-		Report.report(1, "Field Env:\t\t" + fieldEnv);
+//		Report.report(1, "Field Env:\t\t" + fieldEnv);
+//		Report.report(1, "Local Env:\t\t" + localEnv);
+		Report.report(1, "Local Env:\t" + localEnv.size() + "\t" + localEnv);
 		
 		super.finish(ast);
 	}
@@ -146,8 +153,8 @@ public class EquGenerator extends ContextVisitor {
 		fieldEnv.put(fieldIns, defaultUse);
 	}
 	
-	public void addToLocalEnv(LocalInstance localIns) {
-		
+	public void addToLocalEnv(JL5LocalInstance localIns) {
+		localEnv.put(localIns, defaultUse);
 	}
 	
 	/**
@@ -170,8 +177,9 @@ public class EquGenerator extends ContextVisitor {
 		usedFields.add(fieldIns);
 	}
 	
-	public void markOnLocalEnv(LocalInstance localIns) {
-		
+	public void markOnLocalEnv(JL5LocalInstance localIns) {
+		usedLocals.add(localIns);
+		System.out.println(usedLocals);
 	}
 	
 	/**
@@ -195,7 +203,7 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void checkLocalEnv() {
-		
+		checkEnv(localEnv, usedLocals);
 	}
 	
 	private void checkEnv(HashMap<?, Boolean> env, HashSet<?> usedEnv) {

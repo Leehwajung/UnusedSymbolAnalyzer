@@ -5,6 +5,7 @@ import polyglot.ast.LocalDecl;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5FieldInstance;
+import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
@@ -21,6 +22,9 @@ public class EquGenLocalDeclExt extends EquGenExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		LocalDecl lclDecl = (LocalDecl) this.node();
 		Report.report(0, "Local declaration: " + lclDecl.name());
+		
+		/* Local 환경: Declare Local Variable */
+		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());
 		
 		/* Class 사용: Type of declaration */
 		if(lclDecl.type().type() instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
