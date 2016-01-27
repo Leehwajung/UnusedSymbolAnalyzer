@@ -4,7 +4,9 @@ import polyglot.ast.Field;
 import polyglot.ast.Local;
 import polyglot.ast.LocalDecl;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.ext.jl5.types.JL5ClassType;
+import polyglot.ext.jl5.types.JL5ClassType_c;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.main.Report;
@@ -30,7 +32,19 @@ public class EquGenLocalDeclExt extends EquGenExt {
 		/* Class 사용: Type of declaration */
 		if(lclDecl.type().type() instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
 			v.markOnClassEnv((JL5ClassType) lclDecl.type().type());
+//			System.out.println((lclDecl.type().exceptions()));
 		}
+		
+//		/* Class 사용: ParamTypes*/
+//		((JL5ClassType)lclDecl.type().type()).
+//		System.out.println((JL5ClassType)lclDecl.type().type());
+//		for(ParamTypeNode arg : ((JL5ClassType)lclDecl.type().type()) {
+//			try {
+//			v.markOnClassEnv((JL5ClassType) arg.type());
+//			} catch (Exception e) {
+//				System.out.println("@@@  " + arg.type());
+//			}
+//		}
 		
 		/* Field/Local 사용: Declared as initial value */
 		if(lclDecl.init() != null) {

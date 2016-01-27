@@ -123,9 +123,9 @@ public class EquGenerator extends ContextVisitor {
 		checkFieldEnv();
 		checkLocalEnv();
 		
-//		Report.report(1, "Class Env:\t\t" + classEnv);
+		Report.report(1, "Class Env:\t\t" + classEnv);
 		Report.report(1, "Method Env:\t" + methodEnv);
-//		Report.report(1, "Field Env:\t\t" + fieldEnv);
+		Report.report(1, "Field Env:\t\t" + fieldEnv);
 //		Report.report(1, "Local Env:\t\t" + localEnv);
 		Report.report(1, "Local Env:\t" + localEnv.size() + "\t" + localEnv);
 		

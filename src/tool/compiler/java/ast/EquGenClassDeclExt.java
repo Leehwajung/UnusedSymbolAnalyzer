@@ -3,6 +3,8 @@ package tool.compiler.java.ast;
 import polyglot.ast.ClassDecl;
 import polyglot.ast.Node;
 import polyglot.ast.TypeNode;
+import polyglot.ext.jl5.ast.JL5ClassDeclExt;
+import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
@@ -30,7 +32,7 @@ public class EquGenClassDeclExt extends EquGenExt {
 		
 		/* Class 사용: Type as Interface (Implements) */
 		for(TypeNode arg : clzDecl.interfaces()) {
-				v.markOnClassEnv((JL5ClassType) arg.type());
+			v.markOnClassEnv((JL5ClassType) arg.type());
 		}
 		
 		/**/

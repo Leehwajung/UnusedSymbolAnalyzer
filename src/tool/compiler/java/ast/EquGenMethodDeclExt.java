@@ -3,6 +3,7 @@ package tool.compiler.java.ast;
 import polyglot.ast.Formal;
 import polyglot.ast.MethodDecl;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.ext.jl5.types.*;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
@@ -32,6 +33,15 @@ public class EquGenMethodDeclExt extends EquGenExt {
 		for(Formal arg : mtdDecl.formals()) {
 			if(arg.declType() instanceof JL5ClassType) {	// arg.declType()이 JL5ClassType 객체가 아닌 경우를 걸러냄.
 				v.markOnClassEnv((JL5ClassType) arg.declType());
+			}
+		}
+		
+		/* Class 사용: ParamTypes*/
+		for(TypeVariable arg : ((JL5MethodInstance)mtdDecl.methodInstance()).typeParams()) {
+			try {
+			v.markOnClassEnv((JL5ClassType) arg.erasureType());
+			} catch (Exception e) {
+				System.out.println("@@@  " + arg.erasureType());
 			}
 		}
 		

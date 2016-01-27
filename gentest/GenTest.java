@@ -130,12 +130,20 @@ class GenTest2 extends GenTest4 implements GenTest3{
 //		AGN1 = LOCALVAR;
 		ASDF AGN2 = LOCALVAR;
 		
+		GenTest4 <GenTest7> aa;
+		
+//		uiop();
+		
 		return 'a';
 	}
 	
 	public void qwer(double dd) {
 		
 	}
+	
+//	public <T> void uiop(T aaa) {
+//		
+//	}
 	
 	private char mmmmm;
 }
@@ -144,7 +152,7 @@ interface GenTest3 {
 	
 }
 
-class GenTest4 {
+class GenTest4 <N> {
 	
 }
 
@@ -156,4 +164,8 @@ class GenTest6 {
 	public static void LOCALARG(ASDF asdf) {
 		
 	}
+}
+
+class GenTest7 {
+	
 }
