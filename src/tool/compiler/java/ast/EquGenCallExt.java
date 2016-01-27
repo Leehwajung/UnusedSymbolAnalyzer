@@ -3,8 +3,10 @@ package tool.compiler.java.ast;
 import polyglot.ast.Call;
 import polyglot.ast.Expr;
 import polyglot.ast.Field;
+import polyglot.ast.Local;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5FieldInstance;
+import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
@@ -30,10 +32,21 @@ public class EquGenCallExt extends EquGenExt {
 			v.markOnFieldEnv((JL5FieldInstance) ((Field)call.target()).fieldInstance());
 		}
 		
-		/* Field 사용: Arguments of Method */
+		/* Local 사용: Call Method (호출객체) */
+		else if (call.target() instanceof Local) {	// call.target()이 Local 객체가 아닌 경우를 걸러냄.
+			v.markOnLocalEnv((JL5LocalInstance) ((Local)call.target()).localInstance());
+		}
+		
+		/* Field/Local 사용: Arguments of Method */
 		for(Expr arg : call.arguments()) {
+			/* Field 사용: Arguments of Method */
 			if(arg instanceof Field) {	// arg가 Field 객체가 아닌 경우를 걸러냄.
 				v.markOnFieldEnv((JL5FieldInstance) ((Field)arg).fieldInstance());
+			}
+			
+			/* Local 사용: Arguments of Method */
+			else if(arg instanceof Local) {	// arg가 Local 객체가 아닌 경우를 걸러냄.
+				v.markOnLocalEnv((JL5LocalInstance) ((Local)arg).localInstance());
 			}
 		}
 		

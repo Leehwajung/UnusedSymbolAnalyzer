@@ -21,11 +21,14 @@ public class EquGenMethodDeclExt extends EquGenExt {
 		MethodDecl mtdDecl = (MethodDecl) this.node();
 		 Report.report(0, "Method declaration: " + mtdDecl.name());
 		
-		/* Method 환경: Declare Method */
-		v.addToMethodEnv((JL5ProcedureInstance)mtdDecl.procedureInstance());
 		// TODO: 상속관계 정해지면 EquGenProcedureDeclExt로 옮기기
+		/* Method 환경: Declare method */
+		v.addToMethodEnv((JL5ProcedureInstance)mtdDecl.procedureInstance());
 		
-		/* Class 사용: Argument types of Method */
+		/* Local 환경: Current method*/
+		v.setCurrentMethodEnv((JL5ProcedureInstance)mtdDecl.procedureInstance());
+		
+		/* Class 사용: Argument types of method */
 		for(Formal arg : mtdDecl.formals()) {
 			if(arg.declType() instanceof JL5ClassType) {	// arg.declType()이 JL5ClassType 객체가 아닌 경우를 걸러냄.
 				v.markOnClassEnv((JL5ClassType) arg.declType());

@@ -20,13 +20,13 @@ public class EquGenerator extends ContextVisitor {
 	private static HashMap<JL5ClassType, Boolean> classEnv;
 	private static HashMap<JL5ProcedureInstance, Boolean> methodEnv;
 	private static HashMap<JL5FieldInstance, Boolean> fieldEnv;
-	private static HashMap<JL5LocalInstance, Boolean> localEnv;
+	private static HashMap<JL5ProcedureInstance, HashMap<JL5LocalInstance, Boolean>> localEnv;
 	
 	/* Used */
 	private static HashSet<JL5ClassType> usedclasses;
 	private static HashSet<JL5ProcedureInstance> usedMethods;
 	private static HashSet<JL5FieldInstance> usedFields;
-	private static HashSet<JL5LocalInstance> usedLocals;
+	private static HashMap<JL5ProcedureInstance, HashSet<JL5LocalInstance>> usedLocals;
 	
 	private static JL5ProcedureInstance currentMethodEnv;
 	
@@ -41,7 +41,7 @@ public class EquGenerator extends ContextVisitor {
 		usedclasses = new HashSet<>();
 		usedMethods = new HashSet<>();
 		usedFields = new HashSet<>();
-		usedLocals = new HashSet<>();
+		usedLocals = new HashMap<>();
 	}
 	
 	public EquGenerator(Job job, TypeSystem ts, NodeFactory nf) {
@@ -146,7 +146,7 @@ public class EquGenerator extends ContextVisitor {
 	
 	public void addToMethodEnv(JL5ProcedureInstance methodIns) {
 		methodEnv.put(methodIns, defaultUse);
-//		currentMethodEnv = methodIns;
+		setCurrentMethodEnv(methodIns);
 	}
 	
 	public void addToFieldEnv(JL5FieldInstance fieldIns) {
@@ -154,7 +154,27 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void addToLocalEnv(JL5LocalInstance localIns) {
-		localEnv.put(localIns, defaultUse);
+		try {
+			if(!localEnv.containsKey(currentMethodEnv)) {
+				localEnv.put(currentMethodEnv, new HashMap<>());
+			}
+			
+			localEnv.get(currentMethodEnv).put(localIns, defaultUse);
+		} catch (NullPointerException e) {
+			if(localIns == null) {
+				throw e;
+			} else {
+				throw new CurrentMethodEnvNotSet();
+			}
+		}
+	}
+	
+	public void setCurrentMethodEnv(JL5ProcedureInstance methodIns) {
+		currentMethodEnv = methodIns;
+	}
+	
+	public JL5ProcedureInstance getCurrentMethodEnv() {
+		return currentMethodEnv;
 	}
 	
 	/**
@@ -178,8 +198,20 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void markOnLocalEnv(JL5LocalInstance localIns) {
-		usedLocals.add(localIns);
-		System.out.println(usedLocals);
+		try {
+			if(!usedLocals.containsKey(currentMethodEnv)) {
+				usedLocals.put(currentMethodEnv, new HashSet<>());
+			}
+			
+			usedLocals.get(currentMethodEnv).add(localIns);
+			System.out.println(usedLocals);
+		} catch (NullPointerException e) {
+			if(localIns == null) {
+				throw e;
+			} else {
+				throw new CurrentMethodEnvNotSet();
+			}
+		}
 	}
 	
 	/**
@@ -203,7 +235,11 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void checkLocalEnv() {
-		checkEnv(localEnv, usedLocals);
+		for(Entry<JL5ProcedureInstance, HashMap<JL5LocalInstance, Boolean>> currPdLocalEnv: localEnv.entrySet()) {
+			try {
+				checkEnv(localEnv.get(currPdLocalEnv.getKey()), usedLocals.get(currPdLocalEnv.getKey()));
+			} catch (NullPointerException ignored) {}
+		}
 	}
 	
 	private void checkEnv(HashMap<?, Boolean> env, HashSet<?> usedEnv) {
@@ -218,4 +254,8 @@ public class EquGenerator extends ContextVisitor {
 			}
 		}
 	}
+}
+
+class CurrentMethodEnvNotSet extends NullPointerException {
+	private static final long serialVersionUID = 7692345744334669010L;
 }

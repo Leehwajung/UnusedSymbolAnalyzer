@@ -120,6 +120,16 @@ class GenTest2 extends GenTest4 implements GenTest3{
 		
 		
 		ddddd = new int[4];
+		
+		
+		ASDF LOCALVAR;
+		LOCALVAR = new ASDF(1);
+//		LOCALVAR.zxcv(1.1);
+//		GenTest6.LOCALARG(LOCALVAR);
+		ASDF AGN1;
+//		AGN1 = LOCALVAR;
+		ASDF AGN2 = LOCALVAR;
+		
 		return 'a';
 	}
 	
@@ -143,5 +153,7 @@ class GenTest5 extends GenTest6{
 }
 
 class GenTest6 {
-	
+	public static void LOCALARG(ASDF asdf) {
+		
+	}
 }
