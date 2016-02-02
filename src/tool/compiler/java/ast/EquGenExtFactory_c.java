@@ -15,7 +15,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extNodeImpl()
 	 */
 	@Override
 	protected Ext extNodeImpl() {
@@ -27,37 +26,33 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Id <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extIdImpl()
 	 */
 	@Override
 	protected Ext extIdImpl() {
-		// TODO Auto-generated method stub
-		return super.extIdImpl();
+//		return super.extIdImpl();
+		return new EquGenIdExt();
 	}
 	
 	/**
 	 * SourceFile <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extSourceFileImpl()
 	 */
 	@Override
 	protected Ext extSourceFileImpl() {
-		// TODO Auto-generated method stub
-		return super.extSourceFileImpl();
+//		return super.extSourceFileImpl();
+		return new EquGenSourceFileExt();
 	}
 	
 	/**
 	 * SourceCollection <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extSourceCollectionImpl()
 	 */
 	@Override
 	protected Ext extSourceCollectionImpl() {
-		// TODO Auto-generated method stub
-		return super.extSourceCollectionImpl();
+//		return super.extSourceCollectionImpl();
+		return new EquGenSourceCollectionExt();
 	}
 	
 	/**
 	 * Import <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extImportImpl()
 	 */
 	@Override
 	protected Ext extImportImpl() {
@@ -67,85 +62,86 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * PackageNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extPackageNodeImpl()
 	 */
 	@Override
 	protected Ext extPackageNodeImpl() {
-		// TODO Auto-generated method stub
-		return super.extPackageNodeImpl();
-	}
-	
-	/**
-	 * AmbQualifierNode <: QualifierNode <: Prefix <: Node		<br>
-	 * AmbQualifierNode <: Ambiguous <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extAmbQualifierNodeImpl()
-	 */
-	@Override
-	protected Ext extAmbQualifierNodeImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbQualifierNodeImpl();
-	}
-	
-	/**
-	 * AmbReceiver <: Receiver <: Prefix <: Node		<br>
-	 * AmbReceiver <: Ambiguous <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extAmbReceiverImpl()
-	 */
-	@Override
-	protected Ext extAmbReceiverImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbReceiverImpl();
+//		return super.extPackageNodeImpl();
+		return new EquGenPackageNodeExt();
 	}
 	
 	/**
 	 * AmbPrefix <: Prefix <: Node		<br>
 	 * AmbPrefix <: Ambiguous <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extAmbPrefixImpl()
 	 */
 	@Override
 	protected Ext extAmbPrefixImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbPrefixImpl();
+//		return super.extAmbPrefixImpl();
+		return new EquGenAmbPrefixExt();
+	}
+	
+	/**
+	 * AmbReceiver <: Receiver <: Prefix <: Node		<br>
+	 * AmbReceiver <: Ambiguous <: Node
+	 */
+	@Override
+	protected Ext extAmbReceiverImpl() {
+//		return super.extAmbReceiverImpl();
+		return new EquGenAmbReceiverExt();
+	}
+	
+	/**
+	 * AmbQualifierNode <: QualifierNode <: Prefix <: Node		<br>
+	 * AmbQualifierNode <: Ambiguous <: Node
+	 */
+	@Override
+	protected Ext extAmbQualifierNodeImpl() {
+//		return super.extAmbQualifierNodeImpl();
+		return new EquGenAmbQualifierNodeExt();
 	}
 	
 	/**
 	 * Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extTermImpl()
 	 */
 	@Override
 	protected Ext extTermImpl() {
-		// TODO Auto-generated method stub
-		return super.extTermImpl();
+//		return super.extTermImpl();
+		return new EquGenTermExt();
 	}
 
 	/**
 	 * ClassBody <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extClassBodyImpl()
 	 */
 	@Override
 	protected Ext extClassBodyImpl() {
-		// TODO Auto-generated method stub
-		return super.extClassBodyImpl();
+//		return super.extClassBodyImpl();
+		return new EquGenClassBodyExt();
 	}
 	
 	/**
 	 * ElementValueArrayInit <: Term <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extElementValueArrayInitImpl()
 	 */
 	@Override
 	protected Ext extElementValueArrayInitImpl() {
-		// TODO Auto-generated method stub
-		return super.extElementValueArrayInitImpl();
+//		return super.extElementValueArrayInitImpl();
+		return new EquGenElementValueArrayInitExt();
 	}
 
 	/**
 	 * ElementValuePair <: Term <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extElementValuePairImpl()
 	 */
 	@Override
 	protected Ext extElementValuePairImpl() {
-		// TODO Auto-generated method stub
-		return super.extElementValuePairImpl();
+//		return super.extElementValuePairImpl();
+		return new EquGenElementValuePairExt();
+	}
+	
+	/**
+	 * Formal <: VarDecl <: Term <: Node
+	 */
+	@Override
+	protected Ext extFormalImpl() {
+//		return super.extFormalImpl();
+		return new EquGenFormalExt();
 	}
 	
 	/******************
@@ -154,7 +150,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * ClassMember <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extClassMemberImpl()
 	 */
 	@Override
 	protected Ext extClassMemberImpl() {
@@ -164,7 +159,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * ClassDecl <: ClassMember <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extClassDeclImpl()
 	 */
 	@Override
 	protected Ext extClassDeclImpl() {	// 오버라이딩하고
@@ -174,7 +168,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * ClassDecl <: ClassMember <: Term <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extEnumDeclImpl()
 	 */
 	@Override
 	protected Ext extEnumDeclImpl() {
@@ -184,7 +177,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * FieldDecl <: ClassMember <: Term <: Node	<br>
 	 * FieldDecl <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extFieldDeclImpl()
 	 */
 	@Override
 	protected Ext extFieldDeclImpl() {
@@ -195,7 +187,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extCodeDeclImpl()
 	 */
 	@Override
 	protected Ext extCodeDeclImpl() {
@@ -206,7 +197,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * ProcedureDecl <: CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extProcedureDeclImpl()
 	 */
 	@Override
 	protected Ext extProcedureDeclImpl() {
@@ -217,7 +207,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * ConstructorDecl <: ProcedureDecl <: CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * ConstructorDecl <: ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extConstructorDeclImpl()
 	 */
 	@Override
 	protected Ext extConstructorDeclImpl() {
@@ -228,7 +217,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * MethodDecl <: ProcedureDecl <: CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * MethodDecl <: ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extMethodDeclImpl()
 	 */
 	@Override
 	protected Ext extMethodDeclImpl() {
@@ -239,7 +227,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * AnnotationElemDecl <: MethodDecl <: ProcedureDecl <: CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * AnnotationElemDecl <: MethodDecl <: ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extAnnotationElemDeclImpl()
 	 */
 	@Override
 	protected Ext extAnnotationElemDeclImpl() {
@@ -250,7 +237,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Initializer <: CodeDecl <: ClassMember <: Term <: Node	<br>
 	 * Initializer <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extInitializerImpl()
 	 */
 	@Override
 	protected Ext extInitializerImpl() {
@@ -260,7 +246,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * EnumConstantDecl <: ClassMember <: Term <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extEnumConstantDeclImpl()
 	 */
 	@Override
 	protected Ext extEnumConstantDeclImpl() {
@@ -279,7 +264,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * TypeNode <: Term <: Node	<br>
 	 * TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * TypeNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extTypeNodeImpl()
 	 */
 	@Override
 	protected Ext extTypeNodeImpl() {
@@ -291,7 +275,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * CanonicalTypeNode <: TypeNode <: Term <: Node<br>
 	 * CanonicalTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * CanonicalTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extCanonicalTypeNodeImpl()
 	 */
 	@Override
 	protected Ext extCanonicalTypeNodeImpl() {
@@ -303,7 +286,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * ArrayTypeNode <: TypeNode <: Term <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extArrayTypeNodeImpl()
 	 */
 	@Override
 	protected Ext extArrayTypeNodeImpl() {
@@ -315,7 +297,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * AmbTypeNode <: TypeNode <: Term <: Node	<br>
 	 * AmbTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extAmbTypeNodeImpl()
 	 */
 	@Override
 	protected Ext extAmbTypeNodeImpl() {
@@ -327,7 +308,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * ParamTypeNode <: TypeNode <: Term <: Node	<br>
 	 * ParamTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * ParamTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extParamTypeNodeImpl()
 	 */
 	@Override
 	protected Ext extParamTypeNodeImpl() {
@@ -380,7 +360,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Stmt <: Term <: Node	<br>
-	 * @see polyglot.ast.AbstractExtFactory_c#extStmtImpl()
 	 */
 	@Override
 	protected Ext extStmtImpl() {
@@ -391,7 +370,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * LocalDecl <: ForInit <: Stmt <: Term <: Node	<br>
 	 * LocalDecl <: VarDecl <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extLocalDeclImpl()
 	 */
 	@Override
 	protected Ext extLocalDeclImpl() {
@@ -401,7 +379,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * LocalClassDecl <: Stmt <: Term <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extLocalClassDeclImpl()
 	 */
 	@Override
 	protected Ext extLocalClassDeclImpl() {
@@ -419,7 +396,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Expr <: Term <: Node
 	 * Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extExprImpl()
 	 */
 	@Override
 	protected Ext extExprImpl() {
@@ -430,7 +406,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Cast <: Expr <: Term <: Node
 	 * Cast <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extCastImpl()
 	 */
 	@Override
 	protected Ext extCastImpl() {
@@ -441,7 +416,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Instanceof <: Expr <: Term <: Node
 	 * Instanceof <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extInstanceofImpl()
 	 */
 	@Override
 	protected Ext extInstanceofImpl() {
@@ -452,7 +426,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * New <: Expr <: Term <: Node
 	 * New <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extNewImpl()
 	 */
 	@Override
 	protected Ext extNewImpl() {
@@ -463,7 +436,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * NewArray <: Expr <: Term <: Node
 	 * NewArray <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extNewArrayImpl()
 	 */
 	@Override
 	protected Ext extNewArrayImpl() {
@@ -474,7 +446,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Call <: Expr <: Term <: Node
 	 * Call <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extCallImpl()
 	 */
 	@Override
 	protected Ext extCallImpl() {
@@ -485,7 +456,6 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * Assign <: Expr <: Term <: Node
 	 * Assign <: Expr <: Receiver <: Prefix <: Node
-	 * @see polyglot.ast.AbstractExtFactory_c#extAssignImpl()
 	 */
 	@Override
 	protected Ext extAssignImpl() {

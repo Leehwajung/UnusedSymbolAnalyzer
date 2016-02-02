@@ -13,14 +13,15 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenCodeDeclExt extends EquGenClassMemberExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		CodeDecl cdDecl = (CodeDecl) this.node();
 		Report.report(0, "Code declaration: " + cdDecl);
+		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

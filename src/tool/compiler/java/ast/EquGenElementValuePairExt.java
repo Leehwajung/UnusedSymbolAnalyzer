@@ -1,24 +1,22 @@
 package tool.compiler.java.ast;
 
-import polyglot.ast.AmbTypeNode;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.ast.ElementValuePair;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
 /**
- * AmbTypeNode <: TypeNode <: Term <: Node	<br>
- * AmbTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
- * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+ * ElementValuePair <: Term <: Node
  * @author LHJ
  */
-public class EquGenAmbTypeNodeExt extends EquGenTypeNodeExt {
+public class EquGenElementValuePairExt extends EquGenTermExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
-		AmbTypeNode atnd = (AmbTypeNode)this.node();
-		Report.report(0, "Ambiguous type node: " + atnd);
+		ElementValuePair evp = (ElementValuePair) this.node();
+		Report.report(0, "Element value pair: " + evp);
 		
 		return super.equGenEnter(v);
 	}
