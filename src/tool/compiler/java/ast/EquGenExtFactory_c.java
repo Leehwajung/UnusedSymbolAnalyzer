@@ -79,7 +79,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * AmbPrefix <: Prefix <: Node		<br>
+	 * AmbPrefix <: Prefix <: Node	<br>
 	 * AmbPrefix <: Ambiguous <: Node
 	 */
 	@Override
@@ -89,7 +89,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * AmbReceiver <: Receiver <: Prefix <: Node		<br>
+	 * AmbReceiver <: Receiver <: Prefix <: Node	<br>
 	 * AmbReceiver <: Ambiguous <: Node
 	 */
 	@Override
@@ -99,7 +99,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * AmbQualifierNode <: QualifierNode <: Prefix <: Node		<br>
+	 * AmbQualifierNode <: QualifierNode <: Prefix <: Node	<br>
 	 * AmbQualifierNode <: Ambiguous <: Node
 	 */
 	@Override
@@ -309,7 +309,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * CanonicalTypeNode <: TypeNode <: Term <: Node<br>
+	 * CanonicalTypeNode <: TypeNode <: Term <: Node	<br>
 	 * CanonicalTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * CanonicalTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
 	 */
@@ -442,7 +442,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 *********/
 	
 	/**
-	 * Expr <: Term <: Node
+	 * Expr <: Term <: Node	<br>
 	 * Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -452,7 +452,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * Cast <: Expr <: Term <: Node
+	 * Cast <: Expr <: Term <: Node	<br>
 	 * Cast <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -462,7 +462,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * Instanceof <: Expr <: Term <: Node
+	 * Instanceof <: Expr <: Term <: Node	<br>
 	 * Instanceof <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -472,7 +472,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * New <: Expr <: Term <: Node
+	 * New <: Expr <: Term <: Node	<br>
 	 * New <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -482,7 +482,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * NewArray <: Expr <: Term <: Node
+	 * NewArray <: Expr <: Term <: Node	<br>
 	 * NewArray <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -492,7 +492,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * Call <: Expr <: Term <: Node
+	 * Call <: Expr <: Term <: Node	<br>
 	 * Call <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
@@ -502,7 +502,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * Assign <: Expr <: Term <: Node
+	 * Assign <: Expr <: Term <: Node	<br>
 	 * Assign <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
