@@ -4,9 +4,7 @@ import polyglot.ast.Field;
 import polyglot.ast.Local;
 import polyglot.ast.LocalDecl;
 import polyglot.ast.Node;
-import polyglot.ext.jl5.ast.ParamTypeNode;
 import polyglot.ext.jl5.types.JL5ClassType;
-import polyglot.ext.jl5.types.JL5ClassType_c;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.main.Report;
@@ -18,7 +16,7 @@ import tool.compiler.java.visit.EquGenerator;
  * LocalDecl <: VarDecl <: Term <: Node
  * @author LHJ
  */
-public class EquGenLocalDeclExt extends EquGenExt {
+public class EquGenLocalDeclExt extends EquGenStmtExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override

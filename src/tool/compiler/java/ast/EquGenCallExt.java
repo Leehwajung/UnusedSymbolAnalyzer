@@ -14,9 +14,10 @@ import tool.compiler.java.visit.EquGenerator;
 
 /**
  * Call <: Expr <: Term <: Node
+ * Call <: Expr <: Receiver <: Prefix <: Node
  * @author LHJ
  */
-public class EquGenCallExt extends EquGenExt {
+public class EquGenCallExt extends EquGenExprExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 	
 	@Override

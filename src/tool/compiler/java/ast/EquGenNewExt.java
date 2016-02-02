@@ -9,9 +9,10 @@ import tool.compiler.java.visit.EquGenerator;
 
 /**
  * New <: Expr <: Term <: Node
+ * New <: Expr <: Receiver <: Prefix <: Node
  * @author LHJ
  */
-public class EquGenNewExt extends EquGenExt {
+public class EquGenNewExt extends EquGenExprExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override

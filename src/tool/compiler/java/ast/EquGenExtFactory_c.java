@@ -13,6 +13,10 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 		super(nextExtFactory);
 	}
 	
+	/**
+	 * Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extNodeImpl()
+	 */
 	@Override
 	protected Ext extNodeImpl() {
 		return new EquGenExt();
@@ -272,6 +276,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 ****************/
 	
 	/**
+	 * TypeNode <: Term <: Node	<br>
 	 * TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * TypeNode <: QualifierNode <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extTypeNodeImpl()
@@ -283,6 +288,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
+	 * CanonicalTypeNode <: TypeNode <: Term <: Node<br>
 	 * CanonicalTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * CanonicalTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extCanonicalTypeNodeImpl()
@@ -294,6 +300,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
+	 * ArrayTypeNode <: TypeNode <: Term <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extArrayTypeNodeImpl()
@@ -305,6 +312,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
+	 * AmbTypeNode <: TypeNode <: Term <: Node	<br>
 	 * AmbTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extAmbTypeNodeImpl()
@@ -316,6 +324,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
+	 * ParamTypeNode <: TypeNode <: Term <: Node	<br>
 	 * ParamTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * ParamTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
 	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extParamTypeNodeImpl()
@@ -370,7 +379,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 *********/
 	
 	/**
-	 * Stmt <: Term <: Node
+	 * Stmt <: Term <: Node	<br>
 	 * @see polyglot.ast.AbstractExtFactory_c#extStmtImpl()
 	 */
 	@Override
@@ -408,7 +417,19 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 *********/
 	
 	/**
+	 * Expr <: Term <: Node
+	 * Expr <: Receiver <: Prefix <: Node
+	 * @see polyglot.ast.AbstractExtFactory_c#extExprImpl()
+	 */
+	@Override
+	protected Ext extExprImpl() {
+//		return super.extExprImpl();
+		return new EquGenExprExt();
+	}
+	
+	/**
 	 * Cast <: Expr <: Term <: Node
+	 * Cast <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extCastImpl()
 	 */
 	@Override
@@ -419,6 +440,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Instanceof <: Expr <: Term <: Node
+	 * Instanceof <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extInstanceofImpl()
 	 */
 	@Override
@@ -429,6 +451,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * New <: Expr <: Term <: Node
+	 * New <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extNewImpl()
 	 */
 	@Override
@@ -439,6 +462,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * NewArray <: Expr <: Term <: Node
+	 * NewArray <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extNewArrayImpl()
 	 */
 	@Override
@@ -449,6 +473,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Call <: Expr <: Term <: Node
+	 * Call <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extCallImpl()
 	 */
 	@Override
@@ -459,6 +484,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	/**
 	 * Assign <: Expr <: Term <: Node
+	 * Assign <: Expr <: Receiver <: Prefix <: Node
 	 * @see polyglot.ast.AbstractExtFactory_c#extAssignImpl()
 	 */
 	@Override

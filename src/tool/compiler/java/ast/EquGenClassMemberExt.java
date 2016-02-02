@@ -10,7 +10,7 @@ import tool.compiler.java.visit.EquGenerator;
  * ClassMember <: Term <: Node
  * @author LHJ
  */
-public class EquGenClassMemberExt extends EquGenExt {
+public class EquGenClassMemberExt extends EquGenTermExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override

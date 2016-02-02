@@ -10,7 +10,7 @@ import tool.compiler.java.visit.EquGenerator;
  * LocalClassDecl <: Stmt <: Term <: Node
  * @author LHJ
  */
-public class EquGenLocalClassDeclExt extends EquGenExt {
+public class EquGenLocalClassDeclExt extends EquGenStmtExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override

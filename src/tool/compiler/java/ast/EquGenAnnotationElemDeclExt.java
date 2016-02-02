@@ -11,7 +11,7 @@ import tool.compiler.java.visit.EquGenerator;
  * AnnotationElemDecl <: MethodDecl <: ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
  * @author LHJ
  */
-public class EquGenAnnotationElemDeclExt extends EquGenExt {
+public class EquGenAnnotationElemDeclExt extends EquGenMethodDeclExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 
 	@Override

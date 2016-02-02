@@ -1,10 +1,7 @@
 package tool.compiler.java.ast;
 
-import polyglot.ast.Formal;
 import polyglot.ast.MethodDecl;
 import polyglot.ast.Node;
-import polyglot.ext.jl5.ast.ParamTypeNode;
-import polyglot.ext.jl5.types.*;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
@@ -14,36 +11,13 @@ import tool.compiler.java.visit.EquGenerator;
  * MethodDecl <: ProcedureDecl <: CodeDecl <: CodeBlock <: CodeNode <: Term <: Node
  * @author LHJ
  */
-public class EquGenMethodDeclExt extends EquGenExt {
+public class EquGenMethodDeclExt extends EquGenProcedureDeclExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
 	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		MethodDecl mtdDecl = (MethodDecl) this.node();
 		 Report.report(0, "Method declaration: " + mtdDecl.name());
-		
-		// TODO: 상속관계 정해지면 EquGenProcedureDeclExt로 옮기기
-		/* Method 환경: Declare method */
-		v.addToMethodEnv((JL5ProcedureInstance)mtdDecl.procedureInstance());
-		
-		/* Local 환경: Current method*/
-		v.setCurrentMethodEnv((JL5ProcedureInstance)mtdDecl.procedureInstance());
-		
-		/* Class 사용: Argument types of method */
-		for(Formal arg : mtdDecl.formals()) {
-			if(arg.declType() instanceof JL5ClassType) {	// arg.declType()이 JL5ClassType 객체가 아닌 경우를 걸러냄.
-				v.markOnClassEnv((JL5ClassType) arg.declType());
-			}
-		}
-		
-		/* Class 사용: ParamTypes*/
-		for(TypeVariable arg : ((JL5MethodInstance)mtdDecl.methodInstance()).typeParams()) {
-			try {
-			v.markOnClassEnv((JL5ClassType) arg.erasureType());
-			} catch (Exception e) {
-				System.out.println("@@@  " + arg.erasureType());
-			}
-		}
 		
 		/*******************************************************************************************************************************/
 		/**
