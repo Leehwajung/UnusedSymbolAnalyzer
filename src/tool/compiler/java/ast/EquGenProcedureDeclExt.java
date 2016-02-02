@@ -21,7 +21,7 @@ public class EquGenProcedureDeclExt extends EquGenCodeDeclExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ProcedureDecl pcdDecl = (ProcedureDecl) this.node();
-		Report.report(0, "Procedure declaration: " + pcdDecl.name());
+		Report.report(0, "Procedure Declaration: " + pcdDecl.name());
 		
 		/* Method 환경: Declare method */
 		v.addToMethodEnv((JL5ProcedureInstance)pcdDecl.procedureInstance());

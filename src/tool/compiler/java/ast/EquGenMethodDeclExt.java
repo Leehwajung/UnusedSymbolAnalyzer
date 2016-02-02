@@ -17,7 +17,7 @@ public class EquGenMethodDeclExt extends EquGenProcedureDeclExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		MethodDecl mtdDecl = (MethodDecl) this.node();
-		 Report.report(0, "Method declaration: " + mtdDecl.name());
+		 Report.report(0, "Method Declaration: " + mtdDecl.name());
 		
 		/*******************************************************************************************************************************/
 		/**

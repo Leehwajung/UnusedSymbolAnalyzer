@@ -10,6 +10,7 @@ import tool.compiler.java.visit.EquGenerator;
  * ArrayTypeNode <: TypeNode <: Term <: Node	<br>
  * ArrayTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
  * ArrayTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+ * ArrayTypeNode <: Ambiguous <: Node
  * @author LHJ
  */
 public class EquGenArrayTypeNodeExt extends EquGenTypeNodeExt {

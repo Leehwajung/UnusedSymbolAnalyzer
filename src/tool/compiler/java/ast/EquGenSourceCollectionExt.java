@@ -16,7 +16,7 @@ public class EquGenSourceCollectionExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		SourceCollection srccol = (SourceCollection) this.node();
-		Report.report(0, "Source collection: " + srccol);
+		Report.report(0, "Source Collection: " + srccol);
 		
 		return super.equGenEnter(v);
 	}

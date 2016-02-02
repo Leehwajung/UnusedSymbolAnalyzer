@@ -17,7 +17,7 @@ public class EquGenAmbQualifierNodeExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AmbQualifierNode aqnd = (AmbQualifierNode)this.node();
-		Report.report(0, "Ambiguous qualifier node: " + aqnd);
+		Report.report(0, "Ambiguous Qualifier Node: " + aqnd);
 		
 		return super.equGenEnter(v);
 	}

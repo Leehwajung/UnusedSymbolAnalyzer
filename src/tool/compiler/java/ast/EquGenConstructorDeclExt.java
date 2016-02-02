@@ -17,7 +17,7 @@ public class EquGenConstructorDeclExt extends EquGenProcedureDeclExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ConstructorDecl cstDecl = (ConstructorDecl) this.node();
-		Report.report(0, "Constructor declaration: " + cstDecl.name());
+		Report.report(0, "Constructor Declaration: " + cstDecl.name());
 		return super.equGenEnter(v);
 	}
 

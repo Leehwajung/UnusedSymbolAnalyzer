@@ -17,7 +17,7 @@ public class EquGenAmbPrefixExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AmbPrefix apfx = (AmbPrefix)this.node();
-		Report.report(0, "Ambiguous prefix: " + apfx);
+		Report.report(0, "Ambiguous Prefix: " + apfx);
 		
 		return super.equGenEnter(v);
 	}

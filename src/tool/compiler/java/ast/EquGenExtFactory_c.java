@@ -25,6 +25,15 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	// extension.
 	
 	/**
+	 * Node
+	 */
+	@Override
+	protected Ext extNodeListImpl() {
+//		return super.extNodeListImpl();
+		return new EquGenNodeListExt();
+	}
+
+	/**
 	 * Id <: Node
 	 */
 	@Override
@@ -144,6 +153,33 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 		return new EquGenFormalExt();
 	}
 	
+	/**
+	 * Term <: Node
+	 */
+	@Override
+	protected Ext extNormalAnnotationElemImpl() {
+//		return super.extNormalAnnotationElemImpl();
+		return new EquGenNormalAnnotationElemExt();
+	}
+	
+	/**
+	 * Term <: Node
+	 */
+	@Override
+	protected Ext extMarkerAnnotationElemImpl() {
+//		return super.extMarkerAnnotationElemImpl();
+		return new EquGenMarkerAnnotationElemExt();
+	}
+	
+	/**
+	 * Term <: Node
+	 */
+	@Override
+	protected Ext extSingleElementAnnotationElemImpl() {
+//		return super.extSingleElementAnnotationElemImpl();
+		return new EquGenSingleElementAnnotationElemExt();
+	}
+	
 	/******************
 	 * ClassMember *
 	 ******************/
@@ -171,7 +207,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 */
 	@Override
 	protected Ext extEnumDeclImpl() {
-		return super.extEnumDeclImpl();
+//		return super.extEnumDeclImpl();
+		return new EquGenEnumDeclExt();
 	}
 	
 	/**
@@ -286,6 +323,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	 * ArrayTypeNode <: TypeNode <: Term <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
 	 * ArrayTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+	 * ArrayTypeNode <: Ambiguous <: Node
 	 */
 	@Override
 	protected Ext extArrayTypeNodeImpl() {
@@ -296,7 +334,9 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	/**
 	 * AmbTypeNode <: TypeNode <: Term <: Node	<br>
 	 * AmbTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
-	 * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+	 * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node	<br>
+	 * AmbTypeNode <: AmbQualifierNode <: QualifierNode <: Prefix <: Node	<br>
+	 * AmbTypeNode <: AmbQualifierNode <: Ambiguous <: Node
 	 */
 	@Override
 	protected Ext extAmbTypeNodeImpl() {
@@ -316,39 +356,47 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extAmbTypeInstantiationImpl()
+	 * TypeNode <: Term <: Node	<br>
+	 * TypeNode <: Receiver <: Prefix <: Node	<br>
+	 * TypeNode <: QualifierNode <: Prefix <: Node
 	 */
 	@Override
 	protected Ext extAmbTypeInstantiationImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbTypeInstantiationImpl();
+//		return super.extAmbTypeInstantiationImpl();
+		return new EquGenAmbTypeInstantiationExt();
 	}
 
 	/**
-	 * @see polyglot.ext.jl5.ast.JL5AbstractExtFactory_c#extAmbWildCardImpl()
+	 * TypeNode <: Term <: Node	<br>
+	 * TypeNode <: Receiver <: Prefix <: Node	<br>
+	 * TypeNode <: QualifierNode <: Prefix <: Node
 	 */
 	@Override
 	protected Ext extAmbWildCardImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbWildCardImpl();
+//		return super.extAmbWildCardImpl();
+		return new EquGenAmbWildCardExt();
 	}
 	
 	/**
-	 * @see polyglot.ext.jl7.ast.JL7AbstractExtFactory_c#extAmbDiamondTypeNodeImpl()
+	 * TypeNode <: Term <: Node	<br>
+	 * TypeNode <: Receiver <: Prefix <: Node	<br>
+	 * TypeNode <: QualifierNode <: Prefix <: Node
 	 */
 	@Override
 	protected Ext extAmbDiamondTypeNodeImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbDiamondTypeNodeImpl();
+//		return super.extAmbDiamondTypeNodeImpl();
+		return new EquGenAmbDiamondTypeNodeExt();
 	}
 
 	/**
-	 * @see polyglot.ext.jl7.ast.JL7AbstractExtFactory_c#extAmbUnionTypeImpl()
+	 * TypeNode <: Term <: Node	<br>
+	 * TypeNode <: Receiver <: Prefix <: Node	<br>
+	 * TypeNode <: QualifierNode <: Prefix <: Node
 	 */
 	@Override
 	protected Ext extAmbUnionTypeImpl() {
-		// TODO Auto-generated method stub
-		return super.extAmbUnionTypeImpl();
+//		return super.extAmbUnionTypeImpl();
+		return new EquGenAmbUnionTypeExt();
 	}
 	
 	/** !TypeNode **/

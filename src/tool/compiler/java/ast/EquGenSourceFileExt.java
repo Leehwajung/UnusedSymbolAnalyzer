@@ -16,7 +16,7 @@ public class EquGenSourceFileExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		SourceFile srcfile = (SourceFile) this.node();
-		Report.report(0, "Source file: " + srcfile);
+		Report.report(0, "Source File: " + srcfile);
 		
 		return super.equGenEnter(v);
 	}

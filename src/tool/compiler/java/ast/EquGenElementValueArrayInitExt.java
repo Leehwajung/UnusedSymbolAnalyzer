@@ -16,7 +16,7 @@ public class EquGenElementValueArrayInitExt extends EquGenTermExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ElementValueArrayInit evai = (ElementValueArrayInit) this.node();
-		Report.report(0, "Element value array initialization: " + evai);
+		Report.report(0, "Element Value Array Initialization: " + evai);
 		
 		return super.equGenEnter(v);
 	}

@@ -22,7 +22,7 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		LocalDecl lclDecl = (LocalDecl) this.node();
-		Report.report(0, "Local declaration: " + lclDecl.name());
+		Report.report(0, "Local Declaration: " + lclDecl.name());
 		
 		/* Local 환경: Declare local variable */
 		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());

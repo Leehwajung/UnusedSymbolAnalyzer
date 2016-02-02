@@ -16,7 +16,7 @@ public class EquGenPackageNodeExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		PackageNode pkgnd = (PackageNode) this.node();
-		Report.report(0, "Package node: " + pkgnd);
+		Report.report(0, "Package Node: " + pkgnd);
 		
 		return super.equGenEnter(v);
 	}

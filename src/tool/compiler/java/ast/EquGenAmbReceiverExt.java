@@ -17,7 +17,7 @@ public class EquGenAmbReceiverExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AmbReceiver arcv = (AmbReceiver)this.node();
-		Report.report(0, "Ambiguous receiver: " + arcv);
+		Report.report(0, "Ambiguous Receiver: " + arcv);
 		
 		return super.equGenEnter(v);
 	}

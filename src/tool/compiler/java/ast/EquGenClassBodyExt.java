@@ -16,7 +16,7 @@ public class EquGenClassBodyExt extends EquGenTermExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ClassBody clzbody = (ClassBody) this.node();
-		Report.report(0, "Class body: " + clzbody);
+		Report.report(0, "Class Body: " + clzbody);
 		
 		return super.equGenEnter(v);
 	}

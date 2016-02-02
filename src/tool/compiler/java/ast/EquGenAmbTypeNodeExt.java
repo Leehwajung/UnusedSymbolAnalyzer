@@ -9,7 +9,9 @@ import tool.compiler.java.visit.EquGenerator;
 /**
  * AmbTypeNode <: TypeNode <: Term <: Node	<br>
  * AmbTypeNode <: TypeNode <: Receiver <: Prefix <: Node	<br>
- * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node
+ * AmbTypeNode <: TypeNode <: QualifierNode <: Prefix <: Node	<br>
+ * AmbTypeNode <: AmbQualifierNode <: QualifierNode <: Prefix <: Node	<br>
+ * AmbTypeNode <: AmbQualifierNode <: Ambiguous <: Node
  * @author LHJ
  */
 public class EquGenAmbTypeNodeExt extends EquGenTypeNodeExt {
@@ -18,7 +20,7 @@ public class EquGenAmbTypeNodeExt extends EquGenTypeNodeExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AmbTypeNode atnd = (AmbTypeNode)this.node();
-		Report.report(0, "Ambiguous qualifier node: " + atnd);
+		Report.report(0, "Ambiguous Qualifier Node: " + atnd);
 		
 		return super.equGenEnter(v);
 	}

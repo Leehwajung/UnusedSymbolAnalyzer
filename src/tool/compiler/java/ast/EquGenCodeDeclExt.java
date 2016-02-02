@@ -17,7 +17,7 @@ public class EquGenCodeDeclExt extends EquGenClassMemberExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		CodeDecl cdDecl = (CodeDecl) this.node();
-		Report.report(0, "Code declaration: " + cdDecl);
+		Report.report(0, "Code Declaration: " + cdDecl);
 		
 		return super.equGenEnter(v);
 	}

@@ -16,7 +16,7 @@ public class EquGenElementValuePairExt extends EquGenTermExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ElementValuePair evp = (ElementValuePair) this.node();
-		Report.report(0, "Element value pair: " + evp);
+		Report.report(0, "Element Value Pair: " + evp);
 		
 		return super.equGenEnter(v);
 	}
