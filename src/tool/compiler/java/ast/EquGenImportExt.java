@@ -12,7 +12,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenImportExt extends EquGenExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Import imp = (Import) this.node();

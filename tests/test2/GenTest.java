@@ -130,9 +130,10 @@ class GenTest2 extends GenTest4 implements GenTest3{
 //		AGN1 = LOCALVAR;
 		ASDF AGN2 = LOCALVAR;
 		
-		GenTest8 <GenTest7> aa;
-		
-//		uiop();
+		GenTest8 <GenTest7> aa = new GenTest8();
+//		GenTest9 aaaa = null;
+//		aa.mtd(aaaa);
+////		uiop();
 		
 		return 'a';
 	}
@@ -153,7 +154,22 @@ interface GenTest3 {
 }
 
 class GenTest4 <N> {
-	
+	public static void LOCALARG(ASDF asdf) {
+		new GenTest10<GenTest11>() {
+			int asdfg() {
+				return 2;
+			}
+		};
+		
+		new GenTest12() {
+
+			int asdfg2() {
+				return 2;
+			}
+		};
+		
+		new GenTest13();
+	}
 }
 
 class GenTest5 extends GenTest6{
@@ -162,7 +178,6 @@ class GenTest5 extends GenTest6{
 
 class GenTest6 {
 	public static void LOCALARG(ASDF asdf) {
-		
 	}
 }
 
@@ -171,5 +186,35 @@ class GenTest7 {
 }
 
 class GenTest8 <N> {
+	public <TT extends GenTest9> int mtd () {
+		TT a;
+		
+		return 1;
+	}
+}
+
+class GenTest9 {
 	
+}
+
+class GenTest10 <T> {
+	
+}
+
+class GenTest11 {
+	int asdfg() {
+		return 1;
+	}
+}
+
+class GenTest12 {
+	int asdfg2() {
+		return 1;
+	}
+}
+
+class GenTest13 {
+	int asdfg2() {
+		return 1;
+	}
 }

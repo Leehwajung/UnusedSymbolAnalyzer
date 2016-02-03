@@ -5,6 +5,7 @@ import polyglot.ast.Expr;
 import polyglot.ast.Field;
 import polyglot.ast.Local;
 import polyglot.ast.Node;
+import polyglot.ast.Receiver;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
@@ -25,17 +26,26 @@ public class EquGenCallExt extends EquGenExprExt {
 		Call call = (Call)this.node();
 		Report.report(0, "Call: " + call.name());
 		
-		/* Method 사용: Call Method */
-		v.markOnMethodEnv((JL5ProcedureInstance) call.procedureInstance());
+		JL5ProcedureInstance procIns = (JL5ProcedureInstance) call.procedureInstance();
 		
+		/* Class 사용: Type Parameter */
+//		for(TypeVariable param : procIns.typeParams()) {
+//			v.markOnMethodEnv((JL5ProcedureInstance) param.erasureType());
+//		}
+		
+		/* Method 사용: Call Method */
+		v.markOnMethodEnv(procIns);
+		
+		/* Field/Local 사용: Call Method (호출객체) */
+		Receiver rcv = call.target();
 		/* Field 사용: Call Method (호출객체) */
-		if(call.target() instanceof Field) {	// call.target()이 Field 객체가 아닌 경우를 걸러냄.
-			v.markOnFieldEnv((JL5FieldInstance) ((Field)call.target()).fieldInstance());
+		if(rcv instanceof Field) {	// rcv가 Field 객체가 아닌 경우를 걸러냄.
+			v.markOnFieldEnv((JL5FieldInstance) ((Field)rcv).fieldInstance());
 		}
 		
 		/* Local 사용: Call Method (호출객체) */
-		else if (call.target() instanceof Local) {	// call.target()이 Local 객체가 아닌 경우를 걸러냄.
-			v.markOnLocalEnv((JL5LocalInstance) ((Local)call.target()).localInstance());
+		else if (rcv instanceof Local) {	// rcv가 Local 객체가 아닌 경우를 걸러냄.
+			v.markOnLocalEnv((JL5LocalInstance) ((Local)rcv).localInstance());
 		}
 		
 		/* Field/Local 사용: Arguments of Method */
