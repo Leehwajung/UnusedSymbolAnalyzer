@@ -23,7 +23,7 @@ public class EquGenClassDeclExt extends EquGenClassMemberExt {
 		/* Class 환경: Declare Class */
 		v.addToClassEnv((JL5ClassType) clzDecl.type());
 		
-		/* Class 사용: Type as superclass (Extends) */
+		/* Class 사용: Type as Superclass (Extends) */
 		if(clzDecl.superClass() != null) {	// 부모클래스가 없는 경우를 걸러냄
 			v.markOnClassEnv((JL5ClassType) clzDecl.superClass().type());
 		}

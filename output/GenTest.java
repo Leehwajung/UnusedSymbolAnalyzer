@@ -56,7 +56,7 @@ public class GenTest {
     public GenTest() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1Yf3AUVx1/d/lxScyPSyApTSEEEqiBeiepYaqplDQkJOlB" +
        "IknpmAbCZu8lWbK3u+zuJUcgtqU6MI4yHRtaOrbpH1JrKxTUduzoVMOopR1q" +
@@ -127,7 +127,7 @@ class ASDF {
     private char method(double dd) { return 'a'; }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1XW2wUVRg+u73X0m0LFKz0BgXTArsWxQSKQCm7tHVpm7ZA" +
        "LCvb6czZdtrZmWHmbLsUq0A0EB8I0XIxEV6EeAkIMRJNDKbGRCAYEwwxaiL4" +
@@ -208,7 +208,7 @@ class GenTest2 extends GenTest4 implements GenTest3 {
         LOCALVAR = new ASDF(1);
         ASDF AGN1;
         ASDF AGN2 = LOCALVAR;
-        GenTest4<GenTest7> aa;
+        GenTest8<GenTest7> aa;
         return 'a';
     }
     
@@ -219,7 +219,7 @@ class GenTest2 extends GenTest4 implements GenTest3 {
     public GenTest2() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1Ye2wcxRmfO5+fOL6LkzjBJH7ETpATuCMJrtSYQhJjxzaX" +
        "2NjGlMsFZ703Z6+9t7vZ3bMvpi4htE1aVREPQ0NFrP6R0DYyBFVFtKqoXFUU" +
@@ -277,7 +277,7 @@ class GenTest2 extends GenTest4 implements GenTest3 {
 
 interface GenTest3 {
     String jlc$CompilerVersion$jl7 = "2.7.0";
-    long jlc$SourceLastModified$jl7 = 1453894200395L;
+    long jlc$SourceLastModified$jl7 = 1454482917329L;
     String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAALVZfXAUZxl/7/IdQhKChErbQELoCKUXSy2OhFpCOJrEC8nk" +
        "UpD07LHZfS9Zsre77L6XHGnDQGcq6AhlaFpA23TGgdFWENQyVms1fpaUotNa" +
@@ -339,7 +339,7 @@ class GenTest4<N> {
     public GenTest4() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1XX2wURRifu/6vpXdtoSJCKXCYlD93oGCi1Uh7HPbq0V56" +
        "pUo9Oaa7c+22e7vL7hw9yh/BxMATIbEgROGpxMSoEBPiE6bGRCGoCYYYNRF9" +
@@ -383,7 +383,7 @@ class GenTest5 extends GenTest6 {
     public GenTest5() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1WX2wURRifu/6vhbsWKIjQFjhMyp87UEuixQgcxbYe9MIB" +
        "xnpyTHfn2m3ndpfZOXoUUTAx8ERIBMQH8AViYhSISvQFU2OiGNQEQ4yaiD5q" +
@@ -426,7 +426,7 @@ class GenTest6 {
     public GenTest6() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1XfWwURRSfu37X0rsWKIjQFlog5eOOqpBoESnHlbZeae0V" +
        "jPXk2O7Otdvu7S67c+1RrAKJgfgHIVoQE+EfS/wICDESTQymxkQgGBMMMWIi" +
@@ -473,7 +473,7 @@ class GenTest7 {
     public GenTest7() { super(); }
     
     public static final String jlc$CompilerVersion$jl7 = "2.7.0";
-    public static final long jlc$SourceLastModified$jl7 = 1453894200395L;
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
     public static final String jlc$ClassType$jl7 =
       ("H4sIAAAAAAAAAK1WX2wURRifu/6vhbsWKIjQlnJoyp87UNFoMQJnsa0HvXCA" +
        "sZ4c0925dtu53WV2jh5FFEwMPBES/ogP8FRiNCrESPQFU2OiGIwJhhg1EX3U" +
@@ -508,4 +508,48 @@ class GenTest7 {
        "auJCEbdPz1Jopqsb7NaX841zxqvCt5W+GpKXP8fL7UX7+pdTLl3o33Fo+rGL" +
        "NlbAtXFiQl4W4O5jI5ILtivm1FbWVdvbdW/+5YZVYaeYfVgVsK199q7sKZhc" +
        "9tHEx4s/3PTWhVsSQ/4FSHR87pULAAA=");
+}
+
+class GenTest8<N> {
+    public GenTest8() { super(); }
+    
+    public static final String jlc$CompilerVersion$jl7 = "2.7.0";
+    public static final long jlc$SourceLastModified$jl7 = 1454482917329L;
+    public static final String jlc$ClassType$jl7 =
+      ("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");
 }

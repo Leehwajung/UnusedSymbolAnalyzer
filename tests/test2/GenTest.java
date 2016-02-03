@@ -130,7 +130,7 @@ class GenTest2 extends GenTest4 implements GenTest3{
 //		AGN1 = LOCALVAR;
 		ASDF AGN2 = LOCALVAR;
 		
-		GenTest4 <GenTest7> aa;
+		GenTest8 <GenTest7> aa;
 		
 //		uiop();
 		
@@ -167,5 +167,9 @@ class GenTest6 {
 }
 
 class GenTest7 {
+	
+}
+
+class GenTest8 <N> {
 	
 }

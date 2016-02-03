@@ -254,8 +254,8 @@ public class EquGenerator extends ContextVisitor {
 			}
 		}
 	}
-}
-
-class CurrentMethodEnvNotSet extends NullPointerException {
-	private static final long serialVersionUID = 7692345744334669010L;
+	
+	public class CurrentMethodEnvNotSet extends NullPointerException {
+		private static final long serialVersionUID = 7692345744334669010L;
+	}
 }

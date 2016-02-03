@@ -1,5 +1,8 @@
 package tool.compiler.java.ast;
 
+import java.util.Map.Entry;
+
+import polyglot.ast.Expr;
 import polyglot.ast.Field;
 import polyglot.ast.Local;
 import polyglot.ast.LocalDecl;
@@ -7,7 +10,11 @@ import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
+import polyglot.ext.jl5.types.JL5SubstClassType;
+import polyglot.ext.jl5.types.TypeVariable;
 import polyglot.main.Report;
+import polyglot.types.ReferenceType;
+import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
@@ -27,33 +34,34 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 		/* Local 환경: Declare local variable */
 		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());
 		
-		/* Class 사용: Type of declaration */
-		if(lclDecl.type().type() instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
-			v.markOnClassEnv((JL5ClassType) lclDecl.type().type());
-//			System.out.println((lclDecl.type().exceptions()));
+		/* Class 사용: Type */
+		Type type = lclDecl.type().type();
+		if (type instanceof JL5ClassType) { // class type이 아닌 경우를 걸러냄.
+			/* Class 사용: Substitution type of declaration */
+			if (type instanceof JL5SubstClassType) {	// JL5SubstClassType 객체가 아닌 경우를 걸러냄.
+				v.markOnClassEnv(((JL5SubstClassType) type).base());			// Base
+				for(Entry<TypeVariable, ReferenceType> substType: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
+					v.markOnClassEnv((JL5ClassType) substType.getValue());	// Substitutions
+				}
+			}
+			
+			/* Class 사용: Type of declaration */
+			else {
+				v.markOnClassEnv((JL5ClassType) type);
+			}
 		}
 		
-//		/* Class 사용: ParamTypes*/
-//		((JL5ClassType)lclDecl.type().type()).
-//		System.out.println((JL5ClassType)lclDecl.type().type());
-//		for(ParamTypeNode arg : ((JL5ClassType)lclDecl.type().type()) {
-//			try {
-//			v.markOnClassEnv((JL5ClassType) arg.type());
-//			} catch (Exception e) {
-//				System.out.println("@@@  " + arg.type());
-//			}
-//		}
-		
 		/* Field/Local 사용: Declared as initial value */
-		if(lclDecl.init() != null) {
+		Expr init = lclDecl.init();
+		if(init != null) {
 			/* Field 사용: Declared as initial value */
-			if(lclDecl.init() instanceof Field) {	// lclDecl.init()가 Field 객체가 아닌 경우와 널인 경우를 걸러냄.
-				v.markOnFieldEnv((JL5FieldInstance) ((Field)lclDecl.init()).fieldInstance());
+			if(init instanceof Field) {	// init이 null인 경우와 Field 객체가 아닌 경우를 걸러냄.
+				v.markOnFieldEnv((JL5FieldInstance) ((Field)init).fieldInstance());
 			}
 			
 			/* Local 사용: Declared as initial value */
-			else if(lclDecl.init() instanceof Local) {	// lclDecl.init()가 Local 객체가 아닌 경우와 널인 경우를 걸러냄.
-				v.markOnLocalEnv((JL5LocalInstance) ((Local)lclDecl.init()).localInstance());
+			else if(init instanceof Local) {	// init이 null인 경우와 Local 객체가 아닌 경우를 걸러냄.
+				v.markOnLocalEnv((JL5LocalInstance) ((Local)init).localInstance());
 			}
 		}
 		

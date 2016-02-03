@@ -403,6 +403,83 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	
 	
 	/*********
+	 * Expr *
+	 *********/
+	
+	/**
+	 * Expr <: Term <: Node	<br>
+	 * Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extExprImpl() {
+//		return super.extExprImpl();
+		return new EquGenExprExt();
+	}
+	
+	/**
+	 * Assign <: Expr <: Term <: Node	<br>
+	 * Assign <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extAssignImpl() {
+//		return super.extAssignImpl();
+		return new EquGenAssignExt();
+	}
+	
+	/**
+	 * Call <: Expr <: Term <: Node	<br>
+	 * Call <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extCallImpl() {
+//		return super.extCallImpl();
+		return new EquGenCallExt();
+	}
+	
+	/**
+	 * New <: Expr <: Term <: Node	<br>
+	 * New <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extNewImpl() {
+//		return super.extNewImpl();
+		return new EquGenNewExt();
+	}
+	
+	/**
+	 * NewArray <: Expr <: Term <: Node	<br>
+	 * NewArray <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extNewArrayImpl() {
+//		return super.extNewArrayImpl();
+		return new EquGenNewArrayExt();
+	}
+	
+	/**
+	 * Cast <: Expr <: Term <: Node	<br>
+	 * Cast <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extCastImpl() {
+//		return super.extCastImpl();
+		return new EquGenCastExt();
+	}
+	
+	/**
+	 * Instanceof <: Expr <: Term <: Node	<br>
+	 * Instanceof <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extInstanceofImpl() {
+//		return super.extInstanceofImpl();
+		return new EquGenInstanceofExt();
+	}
+	
+	/** !Expr **/
+	
+	
+	/*********
 	 * Stmt *
 	 *********/
 	
@@ -435,81 +512,4 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/** !Stmt **/
-	
-	
-	/*********
-	 * Expr *
-	 *********/
-	
-	/**
-	 * Expr <: Term <: Node	<br>
-	 * Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extExprImpl() {
-//		return super.extExprImpl();
-		return new EquGenExprExt();
-	}
-	
-	/**
-	 * Cast <: Expr <: Term <: Node	<br>
-	 * Cast <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extCastImpl() {
-//		return super.extCastImpl();
-		return new EquGenCastExt();
-	}
-	
-	/**
-	 * Instanceof <: Expr <: Term <: Node	<br>
-	 * Instanceof <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extInstanceofImpl() {
-//		return super.extInstanceofImpl();
-		return new EquGenInstanceofExt();
-	}
-	
-	/**
-	 * New <: Expr <: Term <: Node	<br>
-	 * New <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extNewImpl() {
-//		return super.extNewImpl();
-		return new EquGenNewExt();
-	}
-	
-	/**
-	 * NewArray <: Expr <: Term <: Node	<br>
-	 * NewArray <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extNewArrayImpl() {
-//		return super.extNewArrayImpl();
-		return new EquGenNewArrayExt();
-	}
-	
-	/**
-	 * Call <: Expr <: Term <: Node	<br>
-	 * Call <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extCallImpl() {
-//		return super.extCallImpl();
-		return new EquGenCallExt();
-	}
-	
-	/**
-	 * Assign <: Expr <: Term <: Node	<br>
-	 * Assign <: Expr <: Receiver <: Prefix <: Node
-	 */
-	@Override
-	protected Ext extAssignImpl() {
-//		return super.extAssignImpl();
-		return new EquGenAssignExt();
-	}
-	
-	/** !Expr **/
 }
