@@ -1,11 +1,13 @@
 package tool.compiler.java.ast;
 
 import polyglot.ast.Call;
+import polyglot.ast.CanonicalTypeNode;
 import polyglot.ast.Expr;
 import polyglot.ast.Field;
 import polyglot.ast.Local;
 import polyglot.ast.Node;
 import polyglot.ast.Receiver;
+import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
@@ -36,10 +38,15 @@ public class EquGenCallExt extends EquGenExprExt {
 		/* Method 사용: Call Method */
 		v.markOnMethodEnv(procIns);
 		
-		/* Field/Local 사용: Call Method (호출객체) */
+		/* Class/Field/Local 사용: Call Method */
 		Receiver rcv = call.target();
+		/* Class 사용: Call Static Method */
+		if(rcv instanceof CanonicalTypeNode) {	// rcv가 CanonicalTypeNode 객체가 아닌 경우를 걸러냄.
+			v.markOnClassEnv((JL5ClassType) rcv.type());
+		}
+		
 		/* Field 사용: Call Method (호출객체) */
-		if(rcv instanceof Field) {	// rcv가 Field 객체가 아닌 경우를 걸러냄.
+		else if(rcv instanceof Field) {	// rcv가 Field 객체가 아닌 경우를 걸러냄.
 			v.markOnFieldEnv((JL5FieldInstance) ((Field)rcv).fieldInstance());
 		}
 		

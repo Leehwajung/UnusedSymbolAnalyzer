@@ -146,7 +146,7 @@ public class EquGenerator extends ContextVisitor {
 	
 	public void addToMethodEnv(JL5ProcedureInstance methodIns) {
 		methodEnv.put(methodIns, defaultUse);
-		setCurrentMethodEnv(methodIns);
+//		setCurrentMethodEnv(methodIns);
 	}
 	
 	public void addToFieldEnv(JL5FieldInstance fieldIns) {
@@ -161,10 +161,10 @@ public class EquGenerator extends ContextVisitor {
 			
 			localEnv.get(currentMethodEnv).put(localIns, defaultUse);
 		} catch (NullPointerException e) {
-			if(localIns == null) {
-				throw e;
+			if(currentMethodEnv == null) {
+				throw new CurrentMethodEnvNotSetException();
 			} else {
-				throw new CurrentMethodEnvNotSet();
+				throw e;
 			}
 		}
 	}
@@ -206,10 +206,10 @@ public class EquGenerator extends ContextVisitor {
 			usedLocals.get(currentMethodEnv).add(localIns);
 			System.out.println(usedLocals);
 		} catch (NullPointerException e) {
-			if(localIns == null) {
-				throw e;
+			if(currentMethodEnv == null) {
+				throw new CurrentMethodEnvNotSetException();
 			} else {
-				throw new CurrentMethodEnvNotSet();
+				throw e;
 			}
 		}
 	}
@@ -255,7 +255,11 @@ public class EquGenerator extends ContextVisitor {
 		}
 	}
 	
-	public class CurrentMethodEnvNotSet extends NullPointerException {
+	public class CurrentMethodEnvNotSetException extends NullPointerException {
 		private static final long serialVersionUID = 7692345744334669010L;
+	}
+	
+	public class NotPrivateException extends Exception {
+		private static final long serialVersionUID = -94432147478225830L;
 	}
 }

@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.*;
 
 import polyglot.ast.Call;
 
@@ -215,6 +215,14 @@ class GenTest12 {
 
 class GenTest13 {
 	int asdfg2() {
+		GenTest14.alsk();
+		return 1;
+	}
+}
+
+class GenTest14 {
+	static int alsk() {
+		ArrayList<Integer> aa;
 		return 1;
 	}
 }

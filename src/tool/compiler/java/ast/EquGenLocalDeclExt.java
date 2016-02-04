@@ -13,6 +13,7 @@ import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5SubstClassType;
 import polyglot.ext.jl5.types.TypeVariable;
 import polyglot.main.Report;
+import polyglot.types.Importable;
 import polyglot.types.ReferenceType;
 import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
@@ -30,7 +31,11 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		LocalDecl lclDecl = (LocalDecl) this.node();
 		Report.report(0, "Local Declaration: " + lclDecl.name());
-		
+		try {
+		System.out.println("%%%  " + ((Importable) lclDecl.type().type()));
+		} catch(Exception ignored) {
+			
+		}
 		/* Local 환경: Declare local variable */
 		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());
 		

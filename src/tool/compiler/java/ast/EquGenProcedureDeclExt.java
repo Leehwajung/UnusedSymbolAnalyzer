@@ -5,7 +5,6 @@ import polyglot.ast.Node;
 import polyglot.ast.ProcedureDecl;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
-import polyglot.ext.jl5.types.TypeVariable;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
@@ -37,13 +36,13 @@ public class EquGenProcedureDeclExt extends EquGenCodeDeclExt {
 		}
 		
 		/* Class 사용: ParamTypes*/
-		for(TypeVariable arg : ((JL5ProcedureInstance)pcdDecl.procedureInstance()).typeParams()) {
-			try {
-			v.markOnClassEnv((JL5ClassType) arg.erasureType());
-			} catch (Exception e) {
-				System.out.println("@@@  " + arg.erasureType());
-			}
-		}
+//		for(TypeVariable arg : ((JL5ProcedureInstance)pcdDecl.procedureInstance()).typeParams()) {
+//			try {
+//			v.markOnClassEnv((JL5ClassType) arg.erasureType());
+//			} catch (Exception e) {
+//				System.out.println("@@@  " + arg.erasureType());
+//			}
+//		}
 		
 		return super.equGenEnter(v);
 	}
