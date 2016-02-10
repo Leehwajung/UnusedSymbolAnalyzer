@@ -27,7 +27,7 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		FieldDecl fldDecl = (FieldDecl) this.node();
-		Report.report(0, "Field Declaration: " + fldDecl.name());
+		Report.report(0, "Field Declaration: " + fldDecl/*.name()*/);
 		
 		/* Field 환경: Declare Field */
 		v.addToFieldEnv((JL5FieldInstance) fldDecl.fieldInstance());

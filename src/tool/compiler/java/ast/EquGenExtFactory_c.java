@@ -476,6 +476,26 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 		return new EquGenInstanceofExt();
 	}
 	
+	/**
+	 * Field <: NamedVariable <: Variable <: Expr <: Term <: Node
+	 * Field <: NamedVariable <: Variable <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extFieldImpl() {
+//		return super.extFieldImpl();
+		return new EquGenFieldExt();
+	}
+
+	/**
+	 * Local <: NamedVariable <: Variable <: Expr <: Term <: Node
+	 * Local <: NamedVariable <: Variable <: Expr <: Receiver <: Prefix <: Node
+	 */
+	@Override
+	protected Ext extLocalImpl() {
+//		return super.extLocalImpl();
+		return new EquGenLocalExt();
+	}
+	
 	/** !Expr **/
 	
 	
