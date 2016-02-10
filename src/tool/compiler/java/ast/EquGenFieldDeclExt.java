@@ -35,7 +35,7 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 		/* Class 사용: Type */
 		Type type = fldDecl.type().type();
 		if(type instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
-			/* Class 사용: Substitution type of declaration */
+			/* Class 사용: Substitution Type of Declaration */
 			if (type instanceof JL5SubstClassType) {	// JL5SubstClassType 객체가 아닌 경우를 걸러냄.
 				v.markOnClassEnv(((JL5SubstClassType) type).base());			// Base
 				for(Entry<TypeVariable, ReferenceType> substType: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
@@ -43,15 +43,15 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 				}
 			}
 			
-			/* Class 사용: Type of declaration */
+			/* Class 사용: Type of Declaration */
 			else {
 				v.markOnClassEnv((JL5ClassType) type);
 			}
 		}
 		
-		/* Field 사용: Declared as initial value */
+		/* Field 사용: Declared as Initial Value */
 		Expr init = fldDecl.init();
-		if(init != null && init instanceof Field) {	// init이 null인 경우와 Field 객체가 아닌 경우를 걸러냄.
+		if(init != null && init instanceof Field) {	// 초기화하지 않은 - init이 null인 - 경우와 Field 객체가 아닌 경우를 걸러냄.
 			v.markOnFieldEnv((JL5FieldInstance) ((Field)init).fieldInstance());
 		}
 		

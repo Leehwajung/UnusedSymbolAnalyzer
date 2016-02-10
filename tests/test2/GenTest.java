@@ -1,4 +1,4 @@
-import java.util.*;
+import java.util.ArrayList;
 
 import polyglot.ast.Call;
 
@@ -23,6 +23,7 @@ public class GenTest {
 		int y = GenTest.st;
 		method(m55);
 		int qwer = aaaaaaa;
+		
 	}
 	
 	private char method(double dd) {
@@ -61,8 +62,12 @@ public class GenTest {
 			char qqqqqq;
 			qqqqqq= asdfffffff;
 		}
-		
+		Gen2 g2;
 		return 'a';
+	}
+	
+	private class Gen2 {
+		
 	}
 }
 

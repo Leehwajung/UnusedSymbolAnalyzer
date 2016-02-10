@@ -33,10 +33,6 @@ public class EquGenClassDeclExt extends EquGenClassMemberExt {
 			v.markOnClassEnv((JL5ClassType) arg.type());
 		}
 		
-		/**/
-//		List<ParamTypeNode> paramTypes = ((JL5ClassDeclExt)JL5ClassDeclExt.ext(clzDecl)).paramTypes();
-//		Report.report(0, "Class declaration: " + clzDecl.name() + (!paramTypes.isEmpty()? toStringWithGenricBracket(paramTypes) : ""));
-		
 		return super.equGenEnter(v);
 	}
 

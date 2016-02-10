@@ -13,7 +13,6 @@ import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5SubstClassType;
 import polyglot.ext.jl5.types.TypeVariable;
 import polyglot.main.Report;
-import polyglot.types.Importable;
 import polyglot.types.ReferenceType;
 import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
@@ -31,18 +30,14 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		LocalDecl lclDecl = (LocalDecl) this.node();
 		Report.report(0, "Local Declaration: " + lclDecl.name());
-		try {
-		System.out.println("%%%  " + ((Importable) lclDecl.type().type()));
-		} catch(Exception ignored) {
-			
-		}
-		/* Local 환경: Declare local variable */
+		
+		/* Local 환경: Declare Local Variable */
 		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());
 		
 		/* Class 사용: Type */
 		Type type = lclDecl.type().type();
 		if (type instanceof JL5ClassType) { // class type이 아닌 경우를 걸러냄.
-			/* Class 사용: Substitution type of declaration */
+			/* Class 사용: Substitution Type of Declaration */
 			if (type instanceof JL5SubstClassType) {	// JL5SubstClassType 객체가 아닌 경우를 걸러냄.
 				v.markOnClassEnv(((JL5SubstClassType) type).base());			// Base
 				for(Entry<TypeVariable, ReferenceType> substType: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
@@ -50,22 +45,22 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 				}
 			}
 			
-			/* Class 사용: Type of declaration */
+			/* Class 사용: Type of Declaration */
 			else {
 				v.markOnClassEnv((JL5ClassType) type);
 			}
 		}
 		
-		/* Field/Local 사용: Declared as initial value */
+		/* Field/Local 사용: Declared as Initial Value */
 		Expr init = lclDecl.init();
-		if(init != null) {
-			/* Field 사용: Declared as initial value */
-			if(init instanceof Field) {	// init이 null인 경우와 Field 객체가 아닌 경우를 걸러냄.
+		if(init != null) {	// 초기화하지 않은 - init이 null인 - 경우를 걸러냄
+			/* Field 사용: Declared as Initial Value */
+			if(init instanceof Field) {			// Field 객체가 아닌 경우를 걸러냄.
 				v.markOnFieldEnv((JL5FieldInstance) ((Field)init).fieldInstance());
 			}
 			
-			/* Local 사용: Declared as initial value */
-			else if(init instanceof Local) {	// init이 null인 경우와 Local 객체가 아닌 경우를 걸러냄.
+			/* Local 사용: Declared as Initial Value */
+			else if(init instanceof Local) {	// Local 객체가 아닌 경우를 걸러냄.
 				v.markOnLocalEnv((JL5LocalInstance) ((Local)init).localInstance());
 			}
 		}

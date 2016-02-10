@@ -30,19 +30,9 @@ public class EquGenerator extends ContextVisitor {
 	
 	private static JL5ProcedureInstance currentMethodEnv;
 	
+	
 	private static final boolean defaultUse = false;
 	
-	static {
-		classEnv = new HashMap<>();
-		methodEnv = new HashMap<>();
-		fieldEnv = new HashMap<>();
-		localEnv = new HashMap<>();
-		
-		usedclasses = new HashSet<>();
-		usedMethods = new HashSet<>();
-		usedFields = new HashSet<>();
-		usedLocals = new HashMap<>();
-	}
 	
 	public EquGenerator(Job job, TypeSystem ts, NodeFactory nf) {
 		super(job, ts, nf);
@@ -57,12 +47,34 @@ public class EquGenerator extends ContextVisitor {
 	public NodeVisitor begin() {
 		Report.report(1, "EquGenerator: begin()");
 		NodeVisitor nv = super.begin();
+		
+		classEnv = new HashMap<>();
+		methodEnv = new HashMap<>();
+		fieldEnv = new HashMap<>();
+		localEnv = new HashMap<>();
+		
+		usedclasses = new HashSet<>();
+		usedMethods = new HashSet<>();
+		usedFields = new HashSet<>();
+		usedLocals = new HashMap<>();
+		
 		return nv;
 	}
 	
 	@Override
 	public void finish() {
 		Report.report(1, "EquGenerator: finish()");
+		
+		checkClassEnv();
+		checkMethodEnv();
+		checkFieldEnv();
+		checkLocalEnv();
+		
+		Report.report(1, "Class Env (" + classEnv.size()+"):\t\t" + classEnv);
+		Report.report(1, "Method Env (" + methodEnv.size()+"):\t\t" + methodEnv);
+		Report.report(1, "Field Env (" + fieldEnv.size()+"):\t\t" + fieldEnv);
+		Report.report(1, "Local Env (" + localEnv.size() + "):\t\t" + localEnv);
+		
 		super.finish();
 	}
 	
@@ -112,26 +124,7 @@ public class EquGenerator extends ContextVisitor {
 		return super.clone();
 	}
 	
-	/* (non-Javadoc)
-	 * @see polyglot.visit.NodeVisitor#finish(polyglot.ast.Node)
-	 */
-	@Override
-	public void finish(Node ast) {
-		
-		checkClassEnv();
-		checkMethodEnv();
-		checkFieldEnv();
-		checkLocalEnv();
-		
-		Report.report(1, "Class Env:\t\t" + classEnv);
-		Report.report(1, "Method Env:\t" + methodEnv);
-		Report.report(1, "Field Env:\t\t" + fieldEnv);
-//		Report.report(1, "Local Env:\t\t" + localEnv);
-		Report.report(1, "Local Env:\t" + localEnv.size() + "\t" + localEnv);
-		
-		super.finish(ast);
-	}
-
+	
 	/**
 	 * 환경 추가 메서드
 	 */
@@ -141,24 +134,36 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void addToClassEnv(JL5ClassType classType) {
-		classEnv.put(classType, defaultUse);
+		if(classType.flags().isPrivate()) {
+			classEnv.put(classType, defaultUse);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void addToMethodEnv(JL5ProcedureInstance methodIns) {
-		methodEnv.put(methodIns, defaultUse);
-//		setCurrentMethodEnv(methodIns);
+		if(methodIns.flags().isPrivate()) {
+			methodEnv.put(methodIns, defaultUse);
+//			setCurrentMethodEnv(methodIns);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void addToFieldEnv(JL5FieldInstance fieldIns) {
-		fieldEnv.put(fieldIns, defaultUse);
+		if(fieldIns.flags().isPrivate()) {
+			fieldEnv.put(fieldIns, defaultUse);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void addToLocalEnv(JL5LocalInstance localIns) {
+		// localIns은 가시성을 검사하지 않음.
 		try {
 			if(!localEnv.containsKey(currentMethodEnv)) {
 				localEnv.put(currentMethodEnv, new HashMap<>());
 			}
-			
 			localEnv.get(currentMethodEnv).put(localIns, defaultUse);
 		} catch (NullPointerException e) {
 			if(currentMethodEnv == null) {
@@ -186,25 +191,36 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void markOnClassEnv(JL5ClassType classType) {
-		usedclasses.add(classType);
+		if(classType.flags().isPrivate()) {
+			usedclasses.add(classType);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void markOnMethodEnv(JL5ProcedureInstance methodIns) {
-		usedMethods.add(methodIns);
+		if(methodIns.flags().isPrivate()) {
+			usedMethods.add(methodIns);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void markOnFieldEnv(JL5FieldInstance fieldIns) {
-		usedFields.add(fieldIns);
+		if(fieldIns.flags().isPrivate()) {
+			usedFields.add(fieldIns);
+		} else {	// TODO: private이 아닌 경우에 대한 처리
+//			throw new NotPrivateException();
+		}
 	}
 	
 	public void markOnLocalEnv(JL5LocalInstance localIns) {
+		// localIns은 가시성을 검사하지 않음.
 		try {
 			if(!usedLocals.containsKey(currentMethodEnv)) {
 				usedLocals.put(currentMethodEnv, new HashSet<>());
 			}
-			
 			usedLocals.get(currentMethodEnv).add(localIns);
-			System.out.println(usedLocals);
 		} catch (NullPointerException e) {
 			if(currentMethodEnv == null) {
 				throw new CurrentMethodEnvNotSetException();
@@ -238,7 +254,7 @@ public class EquGenerator extends ContextVisitor {
 		for(Entry<JL5ProcedureInstance, HashMap<JL5LocalInstance, Boolean>> currPdLocalEnv: localEnv.entrySet()) {
 			try {
 				checkEnv(localEnv.get(currPdLocalEnv.getKey()), usedLocals.get(currPdLocalEnv.getKey()));
-			} catch (NullPointerException ignored) {}
+			} catch (NullPointerException ignored) {}		// null인 경우 무시 (검사하지 않음).
 		}
 	}
 	
@@ -247,10 +263,8 @@ public class EquGenerator extends ContextVisitor {
 			for(Object used: usedEnv) {
 				if(used.equals(curEnv.getKey())) {
 					curEnv.setValue(true);
-//					System.out.println(curEnv + ": " + used);
 					break;
 				}
-//				System.out.println(curEnv + ": " + used);
 			}
 		}
 	}

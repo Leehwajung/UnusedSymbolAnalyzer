@@ -20,7 +20,7 @@ public class EquGenCastExt extends EquGenExprExt {
 		Cast cast = (Cast) this.node();
 		Report.report(0, "Cast: " + cast);
 		
-		/* Class 사용: Casting type */
+		/* Class 사용: Casting Type */
 		if(cast.type() instanceof JL5ClassType) {	// cast.type()이 JL5ClassType 객체가 아닌 경우를 걸러냄. (기본타입)
 			v.markOnClassEnv((JL5ClassType) cast.type());
 		}

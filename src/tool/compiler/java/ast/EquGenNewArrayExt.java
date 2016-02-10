@@ -20,7 +20,7 @@ public class EquGenNewArrayExt extends EquGenExprExt {
 		NewArray nwArr = (NewArray) this.node();
 		Report.report(0, "New Array: " + nwArr);
 		
-		/* Class 사용: Create new object */
+		/* Class 사용: Create New Object */
 		if(nwArr.baseType().type() instanceof JL5ClassType) {	// nwArr.baseType().type()이 JL5ClassType 객체가 아닌 경우를 걸러냄.
 			v.markOnClassEnv((JL5ClassType) nwArr.baseType().type());
 		}

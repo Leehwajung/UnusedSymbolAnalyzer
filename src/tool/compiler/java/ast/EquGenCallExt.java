@@ -30,11 +30,6 @@ public class EquGenCallExt extends EquGenExprExt {
 		
 		JL5ProcedureInstance procIns = (JL5ProcedureInstance) call.procedureInstance();
 		
-		/* Class 사용: Type Parameter */
-//		for(TypeVariable param : procIns.typeParams()) {
-//			v.markOnMethodEnv((JL5ProcedureInstance) param.erasureType());
-//		}
-		
 		/* Method 사용: Call Method */
 		v.markOnMethodEnv(procIns);
 		

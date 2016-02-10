@@ -20,7 +20,7 @@ public class EquGenInstanceofExt extends EquGenExprExt {
 		Instanceof insof = (Instanceof) this.node();
 		Report.report(0, "Instanceof: " + insof);
 		
-		/* Class 사용: Compare type of "instanceof" */
+		/* Class 사용: Compare Type of "instanceof" */
 		v.markOnClassEnv((JL5ClassType) insof.compareType().type());
 		
 		return super.equGenEnter(v);

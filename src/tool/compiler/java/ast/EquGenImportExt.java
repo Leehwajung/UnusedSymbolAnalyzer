@@ -18,8 +18,8 @@ public class EquGenImportExt extends EquGenExt {
 		Import imp = (Import) this.node();
 		Report.report(0, "Import: " + imp.name());
 		
-		
-		
+//		System.out.println(v.context().importTable().singleTypeImports());
+//		System.out.println(v.context().importTable().package_());
 //		System.out.println((Importable)imp.lang());
 		
 		return super.equGenEnter(v);
