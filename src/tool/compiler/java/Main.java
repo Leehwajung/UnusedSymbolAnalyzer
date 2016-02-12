@@ -61,11 +61,11 @@ public class Main {
 			
 			// output 옵션이 아닌 디렉터리: 하위의 컴파일할 파일을 찾아서 추가함.
 			else {
-				result.addAll(getAllSubCompilableFilePaths(argFile));
+				result.addAll(getSubCompilableFilePaths(argFile));
 			}
 			
 			// 현재 다루는 인자가 output directory (-D 또는 -d) 옵션인지 확인.
-			// 다음번 루프에 하위 파일을 검색할 디렉터리를 결정하는 데 영향을 끼침.
+			// 다음번 루프에 하위 파일을 검색할 디렉터리를 결정하는 데 영향을 미침.
 			if(arg.toLowerCase().equals("-d")) {
 				prevArgOutputDirOption = true;
 			} else {
@@ -76,32 +76,26 @@ public class Main {
 		return result.toArray(new String[result.size()]);
 	}
 	
-	private static ArrayList<String> getAllSubCompilableFilePaths(File file) {
+	private static ArrayList<String> getSubCompilableFilePaths(File file) {
 		
 		File[] packedFile = new File[1];
 		packedFile[0] = file;
-		ArrayList<File> fileList = getSubFile(packedFile, new ArrayList<File>());
-		
-		ArrayList<String> result = new ArrayList<>();
-		for(File subFile : fileList) {
-			String fileName = subFile.getName().toLowerCase();
-			for(String type : compilableFileTypes) {
-				if(fileName.endsWith(type)) {
-					result.add(subFile.getPath());
-				}
-			}
-		}
-		
-		return result;
+
+		return getSubCompilableFilePaths(packedFile, new ArrayList<String>());
 	}
 	
-	private static ArrayList<File> getSubFile(File[] files, ArrayList<File> fileList) {
+	private static ArrayList<String> getSubCompilableFilePaths(File[] files, ArrayList<String> fileList) {
 		
 		for(File file : files) {
 			if(file.isDirectory()) {	// 디렉터리인 경우
-				getSubFile(file.listFiles(), fileList);
+				getSubCompilableFilePaths(file.listFiles(), fileList);
 			} else if (file.isFile()) {	// 파일인 경우
-				fileList.add(file);
+				String fileName = file.getName().toLowerCase();
+				for(String type : compilableFileTypes) {
+					if(fileName.endsWith(type)) {
+						fileList.add(file.getPath());
+					}
+				}
 			}
 		}
 		

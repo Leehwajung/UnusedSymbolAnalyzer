@@ -2,6 +2,7 @@ package tool.compiler.java.ast;
 
 import polyglot.ast.Field;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
@@ -18,6 +19,9 @@ public class EquGenFieldExt extends EquGenExprExt{
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Field fld = (Field)this.node();
 		Report.report(0, "Field: " + fld/*.name()*/);
+		
+		/* Field 사용 */
+		v.markOnFieldEnv((JL5FieldInstance) fld.fieldInstance());
 		
 		return super.equGenEnter(v);
 	}

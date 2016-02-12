@@ -17,16 +17,16 @@ import java.util.Map.Entry;
 public class EquGenerator extends ContextVisitor {
 	
 	/* Environments */
-	private static HashMap<JL5ClassType, Boolean> classEnv;
-	private static HashMap<JL5ProcedureInstance, Boolean> methodEnv;
-	private static HashMap<JL5FieldInstance, Boolean> fieldEnv;
-	private static HashMap<JL5ProcedureInstance, HashMap<JL5LocalInstance, Boolean>> localEnv;
+	private HashMap<JL5ClassType, Boolean> classEnv;
+	private HashMap<JL5ProcedureInstance, Boolean> methodEnv;
+	private HashMap<JL5FieldInstance, Boolean> fieldEnv;
+	private HashMap<JL5ProcedureInstance, HashMap<JL5LocalInstance, Boolean>> localEnv;
 	
 	/* Used */
-	private static HashSet<JL5ClassType> usedclasses;
-	private static HashSet<JL5ProcedureInstance> usedMethods;
-	private static HashSet<JL5FieldInstance> usedFields;
-	private static HashMap<JL5ProcedureInstance, HashSet<JL5LocalInstance>> usedLocals;
+	private HashSet<JL5ClassType> usedClasses;
+	private HashSet<JL5ProcedureInstance> usedMethods;
+	private HashSet<JL5FieldInstance> usedFields;
+	private HashMap<JL5ProcedureInstance, HashSet<JL5LocalInstance>> usedLocals;
 	
 	private static JL5ProcedureInstance currentMethodEnv;
 	
@@ -53,7 +53,7 @@ public class EquGenerator extends ContextVisitor {
 		fieldEnv = new HashMap<>();
 		localEnv = new HashMap<>();
 		
-		usedclasses = new HashSet<>();
+		usedClasses = new HashSet<>();
 		usedMethods = new HashSet<>();
 		usedFields = new HashSet<>();
 		usedLocals = new HashMap<>();
@@ -134,11 +134,11 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void addToClassEnv(JL5ClassType classType) {
-		if(classType.flags().isPrivate()) {
+//		if(classType.flags().isPrivate()) {
 			classEnv.put(classType, defaultUse);
-		} else {	// TODO: private이 아닌 경우에 대한 처리
+//		} else {	// TODO: private이 아닌 경우에 대한 처리
 //			throw new NotPrivateException();
-		}
+//		}
 	}
 	
 	public void addToMethodEnv(JL5ProcedureInstance methodIns) {
@@ -191,15 +191,35 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void markOnClassEnv(JL5ClassType classType) {
-		if(classType.flags().isPrivate()) {
-			usedclasses.add(classType);
+		/* Substitution Class Type */
+		if (classType instanceof JL5SubstClassType) { // 제네릭 클래스인 경우
+			addToUsedClasses(((JL5SubstClassType) classType).base()); // Base
+			for (Entry<TypeVariable, ReferenceType> substType 
+					: ((JL5SubstClassType) classType).subst().substitutions().entrySet()) {
+				addToUsedClasses((JL5ClassType) substType.getValue()); // Substitutions
+			}
+		}
+		
+		/* Class Type */
+		else { // (제네릭이 아닌) 일반 클래스인 경우
+			addToUsedClasses(classType);
+		}
+	}
+	
+	/**
+	 * usedClasses에 추가할 때, 가시성 검사 코드 중복을 피하기 위해 추가한 메서드
+	 * @param classType
+	 */
+	private void addToUsedClasses(JL5ClassType classType) {
+		if(classType.flags().isPrivate()) {	// 가시성 검사
+			usedClasses.add(classType);
 		} else {	// TODO: private이 아닌 경우에 대한 처리
 //			throw new NotPrivateException();
 		}
 	}
 	
 	public void markOnMethodEnv(JL5ProcedureInstance methodIns) {
-		if(methodIns.flags().isPrivate()) {
+		if(methodIns.flags().isPrivate()) {	// 가시성 검사
 			usedMethods.add(methodIns);
 		} else {	// TODO: private이 아닌 경우에 대한 처리
 //			throw new NotPrivateException();
@@ -207,7 +227,7 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void markOnFieldEnv(JL5FieldInstance fieldIns) {
-		if(fieldIns.flags().isPrivate()) {
+		if(fieldIns.flags().isPrivate()) {	// 가시성 검사
 			usedFields.add(fieldIns);
 		} else {	// TODO: private이 아닌 경우에 대한 처리
 //			throw new NotPrivateException();
@@ -239,7 +259,7 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void checkClassEnv() {
-		checkEnv(classEnv, usedclasses);
+		checkEnv(classEnv, usedClasses);
 	}
 	
 	public void checkMethodEnv() {

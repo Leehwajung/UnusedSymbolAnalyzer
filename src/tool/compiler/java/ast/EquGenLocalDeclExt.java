@@ -31,7 +31,7 @@ public class EquGenLocalDeclExt extends EquGenStmtExt {
 		LocalDecl lclDecl = (LocalDecl) this.node();
 		Report.report(0, "Local Declaration: " + lclDecl/*.name()*/);
 		
-		/* Local 환경: Declare Local Variable */
+		/* Local 환경: Local Variable Declaration */
 		v.addToLocalEnv((JL5LocalInstance) lclDecl.localInstance());
 		
 		/* Class 사용: Type */

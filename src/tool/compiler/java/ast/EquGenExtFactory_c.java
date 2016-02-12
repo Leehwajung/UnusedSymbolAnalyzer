@@ -496,6 +496,15 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 		return new EquGenLocalExt();
 	}
 	
+	/**
+	 * @see polyglot.ast.AbstractExtFactory_c#extClassLitImpl()
+	 */
+	@Override
+	protected Ext extClassLitImpl() {
+//		return super.extClassLitImpl();
+		return new EquGenClassLitExt();
+	}
+	
 	/** !Expr **/
 	
 	

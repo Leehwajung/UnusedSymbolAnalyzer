@@ -7,6 +7,7 @@ import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
 import polyglot.main.Report;
+import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
@@ -23,7 +24,7 @@ public class EquGenProcedureDeclExt extends EquGenCodeDeclExt {
 		ProcedureDecl pcdDecl = (ProcedureDecl) this.node();
 		Report.report(0, "Procedure Declaration: " + pcdDecl.name());
 		
-		/* Method 환경: Declare Method */
+		/* Method 환경: Method Declaration */
 		v.addToMethodEnv((JL5ProcedureInstance)pcdDecl.procedureInstance());
 		
 		/* Local 환경: Current Method */
@@ -34,9 +35,10 @@ public class EquGenProcedureDeclExt extends EquGenCodeDeclExt {
 			/* Local 환경: Argument */
 			v.addToLocalEnv((JL5LocalInstance) arg.localInstance());
 			
-			/* Class 사용: Argument Types of Method */
-			if(arg.declType() instanceof JL5ClassType) {	// arg.declType()이 JL5ClassType 객체가 아닌 경우를 걸러냄.
-				v.markOnClassEnv((JL5ClassType) arg.declType());
+			/* Class 사용: Argument Type of Method */
+			Type type = arg.declType();
+			if(type instanceof JL5ClassType) {	// 타입이 클래스 타입인 경우
+				v.markOnClassEnv((JL5ClassType) type);
 			}
 		}
 		

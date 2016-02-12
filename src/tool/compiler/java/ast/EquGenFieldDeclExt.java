@@ -29,22 +29,23 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 		FieldDecl fldDecl = (FieldDecl) this.node();
 		Report.report(0, "Field Declaration: " + fldDecl/*.name()*/);
 		
-		/* Field 환경: Declare Field */
+		/* Field 환경: Field Declaration*/
 		v.addToFieldEnv((JL5FieldInstance) fldDecl.fieldInstance());
 		
-		/* Class 사용: Type */
+		/* Class 사용: Declaration Type */
 		Type type = fldDecl.type().type();
-		if(type instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
+		if(type instanceof JL5ClassType) {	// 타입이 클래스 타입인 경우
 			/* Class 사용: Substitution Type of Declaration */
-			if (type instanceof JL5SubstClassType) {	// JL5SubstClassType 객체가 아닌 경우를 걸러냄.
+			if (type instanceof JL5SubstClassType) {	// 제네릭 클래스인 경우
 				v.markOnClassEnv(((JL5SubstClassType) type).base());			// Base
-				for(Entry<TypeVariable, ReferenceType> substType: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
+				for(Entry<TypeVariable, ReferenceType> substType
+						: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
 					v.markOnClassEnv((JL5ClassType) substType.getValue());	// Substitutions
 				}
 			}
 			
 			/* Class 사용: Type of Declaration */
-			else {
+			else {	// (제네릭이 아닌) 일반 클래스인 경우
 				v.markOnClassEnv((JL5ClassType) type);
 			}
 		}

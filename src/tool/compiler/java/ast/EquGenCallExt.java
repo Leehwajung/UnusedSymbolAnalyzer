@@ -1,7 +1,6 @@
 package tool.compiler.java.ast;
 
 import polyglot.ast.Call;
-import polyglot.ast.CanonicalTypeNode;
 import polyglot.ast.Expr;
 import polyglot.ast.Field;
 import polyglot.ast.Local;
@@ -12,6 +11,7 @@ import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.ext.jl5.types.JL5LocalInstance;
 import polyglot.ext.jl5.types.JL5ProcedureInstance;
 import polyglot.main.Report;
+import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
@@ -30,22 +30,24 @@ public class EquGenCallExt extends EquGenExprExt {
 		
 		JL5ProcedureInstance procIns = (JL5ProcedureInstance) call.procedureInstance();
 		
-		/* Method 사용: Call Method */
+		/* Method 사용: Method Invocation */
 		v.markOnMethodEnv(procIns);
 		
 		/* Class/Field/Local 사용: Call Method */
 		Receiver rcv = call.target();
-		/* Class 사용: Call Static Method */
-		if(rcv instanceof CanonicalTypeNode) {	// rcv가 CanonicalTypeNode 객체가 아닌 경우를 걸러냄.
-			v.markOnClassEnv((JL5ClassType) rcv.type());
+		
+		/* Class 사용: Static Method Invocation */
+		Type type = rcv.type();
+		if(type instanceof JL5ClassType) {	// 타겟의 타입이 클래스 타입인 경우
+			v.markOnClassEnv((JL5ClassType) type);
 		}
 		
-		/* Field 사용: Call Method (호출객체) */
-		else if(rcv instanceof Field) {	// rcv가 Field 객체가 아닌 경우를 걸러냄.
+		/* Field 사용: Method Invocation (호출객체) */
+		if(rcv instanceof Field) {	// rcv가 Field 객체가 아닌 경우를 걸러냄.
 			v.markOnFieldEnv((JL5FieldInstance) ((Field)rcv).fieldInstance());
 		}
 		
-		/* Local 사용: Call Method (호출객체) */
+		/* Local 사용: Method Invocation (호출객체) */
 		else if (rcv instanceof Local) {	// rcv가 Local 객체가 아닌 경우를 걸러냄.
 			v.markOnLocalEnv((JL5LocalInstance) ((Local)rcv).localInstance());
 		}

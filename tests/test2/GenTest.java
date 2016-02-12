@@ -62,7 +62,8 @@ public class GenTest {
 			char qqqqqq;
 			qqqqqq= asdfffffff;
 		}
-		Gen2 g2;
+		Gen2 g2 = null;
+		Gen2 g3 = g2;
 		return 'a';
 	}
 	
@@ -89,7 +90,7 @@ class ASDF {
 	}
 }
 
-class GenTest2 extends GenTest4 implements GenTest3{
+class GenTest2 extends GenTest4<GenTest5> implements GenTest3{
 	public static int st;
 	private int member;
 	private double m55 = 5.5;
@@ -199,7 +200,20 @@ class GenTest8 <N> {
 }
 
 class GenTest9 {
-	
+//	private int aa = 0;
+//	private int bb = 0;
+	private int mmm () {
+		int aa = 0;
+		int bb = 0;
+		int cc = 0;
+		
+		if(aa == 1) {
+			
+		}
+		return bb;
+		
+		
+	}
 }
 
 class GenTest10 <T> {
@@ -231,3 +245,32 @@ class GenTest14 {
 		return 1;
 	}
 }
+
+class GenTest15 extends GenTest16<GenTest14>{ 
+	private int m12345(GenTest17 dd) {
+		return 1;
+	}
+}
+
+class GenTest16<N> { 
+
+}
+
+class GenTest17 { 
+	private int mm() {
+		GenTest18.m2();
+		return 1;
+	}
+	
+	private static class GenTest18 { 
+		private int m1() {
+			
+			return 1;
+		}
+		
+		public static int m2() {
+			return 1;
+		}
+	}
+}
+
