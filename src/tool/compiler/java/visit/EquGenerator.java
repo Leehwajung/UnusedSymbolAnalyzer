@@ -134,11 +134,11 @@ public class EquGenerator extends ContextVisitor {
 	}
 	
 	public void addToClassEnv(JL5ClassType classType) {
-//		if(classType.flags().isPrivate()) {
+		if(classType.flags().isPrivate()) {
 			classEnv.put(classType, defaultUse);
-//		} else {	// TODO: private이 아닌 경우에 대한 처리
+		} else {	// TODO: private이 아닌 경우에 대한 처리
 //			throw new NotPrivateException();
-//		}
+		}
 	}
 	
 	public void addToMethodEnv(JL5ProcedureInstance methodIns) {
