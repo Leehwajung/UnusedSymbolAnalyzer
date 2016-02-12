@@ -17,6 +17,7 @@ public class EquGenLocalClassDeclExt extends EquGenStmtExt {
 	public EquGenerator equGenEnter(EquGenerator v) {
 		LocalClassDecl lclzDecl = (LocalClassDecl) this.node();
 		Report.report(0, "Local Class Declaration: " + lclzDecl);
+		
 		return super.equGenEnter(v);
 	}
 

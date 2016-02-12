@@ -2,8 +2,6 @@ package tool.compiler.java.ast;
 
 import java.util.Map.Entry;
 
-import polyglot.ast.Expr;
-import polyglot.ast.Field;
 import polyglot.ast.FieldDecl;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5ClassType;
@@ -35,25 +33,7 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 		/* Class 사용: Declaration Type */
 		Type type = fldDecl.type().type();
 		if(type instanceof JL5ClassType) {	// 타입이 클래스 타입인 경우
-			/* Class 사용: Substitution Type of Declaration */
-			if (type instanceof JL5SubstClassType) {	// 제네릭 클래스인 경우
-				v.markOnClassEnv(((JL5SubstClassType) type).base());			// Base
-				for(Entry<TypeVariable, ReferenceType> substType
-						: ((JL5SubstClassType) type).subst().substitutions().entrySet()) {
-					v.markOnClassEnv((JL5ClassType) substType.getValue());	// Substitutions
-				}
-			}
-			
-			/* Class 사용: Type of Declaration */
-			else {	// (제네릭이 아닌) 일반 클래스인 경우
-				v.markOnClassEnv((JL5ClassType) type);
-			}
-		}
-		
-		/* Field 사용: Declared as Initial Value */
-		Expr init = fldDecl.init();
-		if(init != null && init instanceof Field) {	// 초기화하지 않은 - init이 null인 - 경우와 Field 객체가 아닌 경우를 걸러냄.
-			v.markOnFieldEnv((JL5FieldInstance) ((Field)init).fieldInstance());
+			v.markOnClassEnv((JL5ClassType) type);
 		}
 		
 		/**

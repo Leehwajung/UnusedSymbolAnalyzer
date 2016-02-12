@@ -4,7 +4,6 @@ import polyglot.ast.CanonicalTypeNode;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.main.Report;
-import polyglot.types.ImportTable;
 import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
@@ -25,18 +24,18 @@ public class EquGenCanonicalTypeNodeExt extends EquGenTypeNodeExt {
 		
 		/* Class 사용 */
 		Type type = ctnd.type();
-		if(type instanceof JL5ClassType) {	// class type이 아닌 경우를 걸러냄.
+		if(type instanceof JL5ClassType) {	// class type인 경우
 			v.markOnClassEnv((JL5ClassType) type);
 		}
 		
-		System.out.println(v.context().importTable().singleTypeImports());
-		try{
-		System.out.println(((ImportTable) ctnd.type()).package_());
-		} catch (Exception e) {
-			System.out.println(( ctnd.type()));
-		}
-		
-		System.out.println("!!!!!!!!!!" + ctnd.type());
+//		System.out.println(v.context().importTable().singleTypeImports());
+//		try{
+//		System.out.println(((ImportTable) ctnd.type()).package_());
+//		} catch (Exception e) {
+//			System.out.println(( ctnd.type()));
+//		}
+//		
+//		System.out.println("!!!!!!!!!!" + ctnd.type());
 		
 		return super.equGenEnter(v);
 	}

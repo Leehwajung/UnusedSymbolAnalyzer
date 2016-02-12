@@ -497,7 +497,8 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 	}
 	
 	/**
-	 * @see polyglot.ast.AbstractExtFactory_c#extClassLitImpl()
+	 * ClassLit <: Lit <: Expr <: Term <: Node	<br>
+	 * ClassLit <: Lit <: Expr <: Receiver <: Prefix <: Node
 	 */
 	@Override
 	protected Ext extClassLitImpl() {

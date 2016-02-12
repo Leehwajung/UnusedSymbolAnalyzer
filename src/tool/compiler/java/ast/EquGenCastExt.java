@@ -8,7 +8,7 @@ import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
 /**
- * Cast <: Expr <: Term <: Node
+ * Cast <: Expr <: Term <: Node	<br>
  * Cast <: Expr <: Receiver <: Prefix <: Node
  * @author LHJ
  */
