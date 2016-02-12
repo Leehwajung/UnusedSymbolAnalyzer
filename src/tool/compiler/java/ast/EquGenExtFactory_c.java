@@ -32,7 +32,7 @@ public final class EquGenExtFactory_c extends EquGenAbstractExtFactory_c {
 //		return super.extNodeListImpl();
 		return new EquGenNodeListExt();
 	}
-
+	
 	/**
 	 * Id <: Node
 	 */

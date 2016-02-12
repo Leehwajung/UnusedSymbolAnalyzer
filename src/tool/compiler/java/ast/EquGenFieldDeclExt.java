@@ -1,15 +1,10 @@
 package tool.compiler.java.ast;
 
-import java.util.Map.Entry;
-
 import polyglot.ast.FieldDecl;
 import polyglot.ast.Node;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5FieldInstance;
-import polyglot.ext.jl5.types.JL5SubstClassType;
-import polyglot.ext.jl5.types.TypeVariable;
 import polyglot.main.Report;
-import polyglot.types.ReferenceType;
 import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;

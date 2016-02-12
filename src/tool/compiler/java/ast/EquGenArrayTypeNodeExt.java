@@ -15,7 +15,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenArrayTypeNodeExt extends EquGenTypeNodeExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ArrayTypeNode atnd = (ArrayTypeNode)this.node();
@@ -23,7 +23,7 @@ public class EquGenArrayTypeNodeExt extends EquGenTypeNodeExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

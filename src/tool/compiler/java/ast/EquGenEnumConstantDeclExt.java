@@ -12,7 +12,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenEnumConstantDeclExt extends EquGenClassMemberExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		EnumConstantDecl ectDecl = (EnumConstantDecl) this.node();

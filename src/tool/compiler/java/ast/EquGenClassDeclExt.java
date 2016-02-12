@@ -14,7 +14,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenClassDeclExt extends EquGenClassMemberExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ClassDecl clzDecl = (ClassDecl)this.node();
@@ -35,7 +35,7 @@ public class EquGenClassDeclExt extends EquGenClassMemberExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

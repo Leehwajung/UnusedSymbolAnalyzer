@@ -13,7 +13,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenAnnotationElemDeclExt extends EquGenMethodDeclExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AnnotationElemDecl ateDecl = (AnnotationElemDecl) this.node();
@@ -21,7 +21,7 @@ public class EquGenAnnotationElemDeclExt extends EquGenMethodDeclExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

@@ -184,6 +184,7 @@ class GenTest5 extends GenTest6{
 
 class GenTest6 {
 	public static void LOCALARG(ASDF asdf) {
+		ASDF ㅁㅁ = asdf;
 	}
 }
 

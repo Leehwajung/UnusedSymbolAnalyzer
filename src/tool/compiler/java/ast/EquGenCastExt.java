@@ -27,7 +27,7 @@ public class EquGenCastExt extends EquGenExprExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

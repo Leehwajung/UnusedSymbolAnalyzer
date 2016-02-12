@@ -12,7 +12,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenStmtExt extends EquGenTermExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Stmt stmt = (Stmt)this.node();
@@ -20,7 +20,7 @@ public class EquGenStmtExt extends EquGenTermExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

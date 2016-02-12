@@ -13,7 +13,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenConstructorDeclExt extends EquGenProcedureDeclExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ConstructorDecl cstDecl = (ConstructorDecl) this.node();
@@ -21,7 +21,7 @@ public class EquGenConstructorDeclExt extends EquGenProcedureDeclExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

@@ -14,7 +14,7 @@ import tool.compiler.java.visit.EquGenerator;
  */
 public class EquGenParamTypeNodeExt extends EquGenTypeNodeExt {
 	private static final long serialVersionUID = SerialVersionUID.generate();
-
+	
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ParamTypeNode ptnd = (ParamTypeNode)this.node();
@@ -22,7 +22,7 @@ public class EquGenParamTypeNodeExt extends EquGenTypeNodeExt {
 		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);
