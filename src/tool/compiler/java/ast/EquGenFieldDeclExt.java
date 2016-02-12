@@ -2,10 +2,8 @@ package tool.compiler.java.ast;
 
 import polyglot.ast.FieldDecl;
 import polyglot.ast.Node;
-import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.ext.jl5.types.JL5FieldInstance;
 import polyglot.main.Report;
-import polyglot.types.Type;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;
 
@@ -24,12 +22,6 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 		
 		/* Field 환경: Field Declaration*/
 		v.addToFieldEnv((JL5FieldInstance) fldDecl.fieldInstance());
-		
-		/* Class 사용: Declaration Type */
-		Type type = fldDecl.type().type();
-		if(type instanceof JL5ClassType) {	// 타입이 클래스 타입인 경우
-			v.markOnClassEnv((JL5ClassType) type);
-		}
 		
 		/**
 		 *  형식: F(<ClassBoundVariables>, Container, field) = FieldType

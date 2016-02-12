@@ -2,7 +2,6 @@ package tool.compiler.java.ast;
 
 import polyglot.ast.ClassDecl;
 import polyglot.ast.Node;
-import polyglot.ast.TypeNode;
 import polyglot.ext.jl5.types.JL5ClassType;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
@@ -22,16 +21,6 @@ public class EquGenClassDeclExt extends EquGenClassMemberExt {
 		
 		/* Class 환경: Class Declaration */
 		v.addToClassEnv((JL5ClassType) clzDecl.type());
-		
-		/* Class 사용: Type as Superclass (Extends) */
-		if(clzDecl.superClass() != null) {	// Object 이외의 부모 클래스가 존재하는 경우
-			v.markOnClassEnv((JL5ClassType) clzDecl.superClass().type());
-		}
-		
-		/* Class 사용: Type as Interface (Implements) */
-		for(TypeNode arg : clzDecl.interfaces()) {
-			v.markOnClassEnv((JL5ClassType) arg.type());
-		}
 		
 		return super.equGenEnter(v);
 	}
