@@ -1,0 +1,24 @@
+// Assumes polyglot.jar is in classpath
+include "polyglot/parse/java12.cup"
+
+package tool.compiler.java.parse;
+
+import tool.compiler.java.types.EquGenTypeSystem;
+import tool.compiler.java.ast.EquGenNodeFactory;
+import polyglot.parse.Name;
+import polyglot.parse.VarDeclarator;
+
+parser Grm extends polyglot.parse.Grm {:
+    public final EquGenTypeSystem ts;
+    public final EquGenNodeFactory nf;
+
+    public Grm(Lexer l, TypeSystem t, NodeFactory n, ErrorQueue q) {
+        super(l, t, n, q);
+        ts = (EquGenTypeSystem) t;
+        nf = (EquGenNodeFactory) n;
+    }
+:};
+
+start with goal;
+
+// TODO: modify the default Java grammar using PPG operations
