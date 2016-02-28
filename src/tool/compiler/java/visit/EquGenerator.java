@@ -186,6 +186,7 @@ public class EquGenerator extends ContextVisitor {
 	 * 사용 여부 표시 메서드
 	 */
 	
+	// TODO: import 대응
 	public void markOnImportEnv() {
 		
 	}
@@ -254,6 +255,7 @@ public class EquGenerator extends ContextVisitor {
 	 * 환경 검사 메서드
 	 */
 	
+	// TODO: import 대응
 	public void checkImportEnv() {
 		
 	}
