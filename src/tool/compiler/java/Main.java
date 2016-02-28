@@ -8,7 +8,7 @@ import java.util.ArrayList;
  * Polyglot's main, passing in the extension's ExtensionInfo.
  */
 public class Main {
-	
+	// 테스트 커밋
 	// 컴파일할 파일 타입 지정
 	private static String[] compilableFileTypes;
 	static {
