@@ -18,7 +18,7 @@ public class EquGenCallExt extends EquGenExprExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Call call = (Call)this.node();
-		Report.report(0, "Call: " + call.name());
+		Report.report(0, "Call: " + call/*.name()*/);
 		
 		/* Method 사용: Method Invocation */
 		v.markOnMethodEnv((JL5ProcedureInstance) call.procedureInstance());

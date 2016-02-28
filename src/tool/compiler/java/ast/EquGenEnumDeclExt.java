@@ -16,7 +16,7 @@ public class EquGenEnumDeclExt extends EquGenClassDeclExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ClassDecl enumDecl = (ClassDecl)this.node();
-		Report.report(0, "Enumeration Declaration: " + enumDecl.name());
+		Report.report(0, "Enumeration Declaration: " + enumDecl/*.name()*/);
 		
 		return super.equGenEnter(v);
 	}

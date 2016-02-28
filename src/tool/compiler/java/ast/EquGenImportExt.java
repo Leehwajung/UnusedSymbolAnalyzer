@@ -16,8 +16,9 @@ public class EquGenImportExt extends EquGenExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		Import imp = (Import) this.node();
-		Report.report(0, "Import: " + imp.name());
+		Report.report(0, "Import: " + imp/*.name()*/);
 		
+		// TODO: import 대응하기
 //		System.out.println(v.context().importTable().singleTypeImports());
 //		System.out.println(v.context().importTable().package_());
 //		System.out.println((Importable)imp.lang());

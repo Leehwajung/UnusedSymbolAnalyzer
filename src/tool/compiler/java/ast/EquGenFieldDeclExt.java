@@ -23,18 +23,9 @@ public class EquGenFieldDeclExt extends EquGenClassMemberExt {
 		/* Field 환경: Field Declaration*/
 		v.addToFieldEnv((JL5FieldInstance) fldDecl.fieldInstance());
 		
-		/**
-		 *  형식: F(<ClassBoundVariables>, Container, field) = FieldType
-		 */
-////		String ClassBoundVariablesStr = toStringWithGenricBracket(
-////				((JL5FieldDeclExt) JL5FieldDeclExt.ext(this.node())).typeParams());		// 멤버 메서드 없음
-//		String ClassBoundVariablesStr = "<>";
-//		
-//		Report.report(1, "F(" + ClassBoundVariablesStr + ", " + fldDecl.fieldInstance().container() + ", " + fldDecl.name() + ") = " + fldDecl.type());
-		
 		return super.equGenEnter(v);
 	}
-
+	
 	@Override
 	public Node equGen(EquGenerator v) {
 		return super.equGen(v);

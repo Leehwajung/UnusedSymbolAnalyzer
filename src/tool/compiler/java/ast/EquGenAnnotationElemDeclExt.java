@@ -17,7 +17,7 @@ public class EquGenAnnotationElemDeclExt extends EquGenMethodDeclExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		AnnotationElemDecl ateDecl = (AnnotationElemDecl) this.node();
-		Report.report(0, "Annotation Elem Declaration: " + ateDecl.name());
+		Report.report(0, "Annotation Elem Declaration: " + ateDecl/*.name()*/);
 		
 		return super.equGenEnter(v);
 	}

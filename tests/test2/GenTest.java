@@ -264,12 +264,13 @@ class GenTest17 {
 	}
 	
 	private static class GenTest18 { 
-		private int m1() {
+		private <G> int m1(G aa) {
 			
 			return 1;
 		}
 		
 		public static int m2() {
+			String aa = "aaaa";
 			return 1;
 		}
 	}

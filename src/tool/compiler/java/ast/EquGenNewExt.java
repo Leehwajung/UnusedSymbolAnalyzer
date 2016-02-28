@@ -2,6 +2,7 @@ package tool.compiler.java.ast;
 
 import polyglot.ast.New;
 import polyglot.ast.Node;
+import polyglot.ext.jl5.types.JL5ProcedureInstance;
 import polyglot.main.Report;
 import polyglot.util.SerialVersionUID;
 import tool.compiler.java.visit.EquGenerator;

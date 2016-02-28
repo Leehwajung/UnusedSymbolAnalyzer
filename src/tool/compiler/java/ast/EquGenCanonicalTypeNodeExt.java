@@ -28,15 +28,6 @@ public class EquGenCanonicalTypeNodeExt extends EquGenTypeNodeExt {
 			v.markOnClassEnv((JL5ClassType) type);
 		}
 		
-//		System.out.println(v.context().importTable().singleTypeImports());
-//		try{
-//		System.out.println(((ImportTable) ctnd.type()).package_());
-//		} catch (Exception e) {
-//			System.out.println(( ctnd.type()));
-//		}
-//		
-//		System.out.println("!!!!!!!!!!" + ctnd.type());
-		
 		return super.equGenEnter(v);
 	}
 	

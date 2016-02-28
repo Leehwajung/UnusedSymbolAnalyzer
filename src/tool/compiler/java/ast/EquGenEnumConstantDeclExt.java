@@ -16,7 +16,7 @@ public class EquGenEnumConstantDeclExt extends EquGenClassMemberExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		EnumConstantDecl ectDecl = (EnumConstantDecl) this.node();
-		Report.report(0, "Enum Constant Declaration: " + ectDecl.name());
+		Report.report(0, "Enum Constant Declaration: " + ectDecl/*.name()*/);
 		return super.equGenEnter(v);
 	}
 

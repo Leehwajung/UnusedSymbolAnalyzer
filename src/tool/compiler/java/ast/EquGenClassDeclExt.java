@@ -17,7 +17,7 @@ public class EquGenClassDeclExt extends EquGenClassMemberExt {
 	@Override
 	public EquGenerator equGenEnter(EquGenerator v) {
 		ClassDecl clzDecl = (ClassDecl)this.node();
-		Report.report(0, "Class Declaration: " + clzDecl.name());
+		Report.report(0, "Class Declaration: " + clzDecl/*.name()*/);
 		
 		/* Class 환경: Class Declaration */
 		v.addToClassEnv((JL5ClassType) clzDecl.type());
